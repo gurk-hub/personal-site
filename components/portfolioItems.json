@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Battle43",
+    "image": "assets/Battle43Pacific.jpg",
+    "description": "A Battlefield-style shooter made in Fortnite UEFN.",
+    "modalContent": "<p>Battle43 is like a remaster of Battlefield 1943 inside Fortnite, complete with vehicles, classes, and Conquest mode. I created 90% of the models myself, and the rest of the game was all me as well. There are a lot of custom systems, like completely custom UI, capture points, round system, destruction, first person mode & more. Battle43 has received great reviews from Battlefield content creators!<br><br>Released March 2024.</p><div class=\"image-gallery\"><div class=\"gallery-container\"><div class=\"gallery-image-wrapper\"><img src=\"assets/b43s1.jpg\" alt=\"Image 1\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div><div class=\"gallery-image-wrapper\"><img src=\"assets/b43s2.jpg\" alt=\"Image 2\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div><div class=\"gallery-image-wrapper\"><img src=\"assets/b43s3.jpg\" alt=\"Image 3\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div></div><div class=\"progress-bar\"></div></div><span><a href=\"https://www.fortnite.com/@gurkis/1322-0197-1845\" class=\"button-green\" target=\"_blank\">Play Now</a><a href=\"https://discord.com/invite/qcy8GRW6nQ\" class=\"button-green\" target=\"_blank\">Discord</a><a href=\"https://www.youtube.com/watch?v=QuKTzJKIw7s\" class=\"button-green\" target=\"_blank\">Trailer</a><a href=\"https://www.youtube.com/watch?v=yo-znZGhCi8\" class=\"button-green\" target=\"_blank\">Review Video</a></span>"
+  },
+  {
+    "title": "Just Drive",
+    "image": "assets/justdrive.jpg",
+    "description": "Arcade-inspired street racing game with cop chases.",
+    "modalContent": "<p>The first of its kind open-world driving game in Fortnite. Large open world to freely drive around. Complete deliveries to earn coins. Spend coins on a new car, special items and car upgrades! <br><br>It was very popular for two years with constant updates and engagement from fans. It was featured by Epic Games.<br><br>Created in Fortnite Creative, so I had to abandon the project when UEFN came out. I am working on new versions of it.<br><br>Released May 2021.</p><span><a href=\"https://www.fortnite.com/@gurkis/7882-5895-5239\" class=\"button-green\" target=\"_blank\">Play Now</a><a href=\"https://www.youtube.com/embed/SvmBOfU5FiY\" class=\"button-green\" target=\"_blank\">Trailer</a><a href=\"https://x.com/JustDriveFN\" class=\"button-green\" target=\"_blank\">Twitter</a></span>"
+  },
+  {
+    "title": "Just Drive: Burning Rubber",
+    "image": "assets/burningrubber.jpg",
+    "description": "A stylized UI kit for menus and HUDs.",
+    "modalContent": "<p>This edition of Just Drive shifts the focus to racing and immersive city driving.</p><div class=\"image-gallery\"><div class=\"gallery-container\"><div class=\"gallery-image-wrapper\"><img src=\"assets/jdbrs1.jpg\" alt=\"Image 1\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div><div class=\"gallery-image-wrapper\"><img src=\"assets/jdbrs2.jpg\" alt=\"Image 2\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div><div class=\"gallery-image-wrapper\"><img src=\"assets/jdbrs3.jpg\" alt=\"Image 3\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div></div><div class=\"progress-bar\"></div></div><span><a href=\"https://www.fortnite.com/@gurkis/2860-7316-8507\" class=\"button-green\" target=\"_blank\">Play Now</a><a href=\"https://x.com/JustDriveFN\" class=\"button-green\" target=\"_blank\">Twitter</a></span>"
+  },
+  {
+    "title": "Melon Run",
+    "image": "assets/charity.jpg",
+    "description": "A collaborative parkour map for charity.",
+    "modalContent": "<p>Worked with lots of other creators to create this parkour map for charity! My level was used for the thumbnail! I also created the collectible mechanic and level tracking.</p><span><a href=\"https://www.fortnite.com/@juicyfruit/5352-2198-7942\" class=\"button-green\" target=\"_blank\">Play Now</a><a href=\"https://twitter.com/OttoPK/status/1755652715898687783\" class=\"button-green\" target=\"_blank\">View Tweet</a></span>"
+  },
+  {
+    "title": "Constant Survival",
+    "image": "assets/constsurv.jpg",
+    "description": "The first proper survival game in Fortnite.",
+    "modalContent": "<p>The first proper survival game in Fortnite, with base building, a hunger system, crafting & more. <br><br>Released January 2021.</p>"
+  },
+  {
+    "title": "Cache Gun Game",
+    "image": "assets/cache.png",
+    "description": "A recreation of CS:GO's Cache in Fortnite.",
+    "modalContent": "<p>A recreation of Cache from CS:GO. It was a great learning experience to recreate a professional map like this.<br><br>Released March 2021.</p>"
+  },
+  {
+    "title": "Other Projects",
+    "image": "assets/otherprojects.jpg",
+    "description": "Collection of 50+ past Fortnite projects.",
+    "modalContent": "<p>Over the years I have released over 50 projects in Fortnite. Many of which are outdated now, but each had a lot of love and effort put into them.</p><div class=\"three-column-grid\"><div class=\"project\"><img src=\"assets/op1.jpg\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op2.jpg\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op3.jpg\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op4.jpg\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op5.jpg\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op6.png\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op7.jpg\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op8.jpg\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op9.jpg\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op10.jpg\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op11.png\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op12.png\" alt=\"Project\"></div></div>"
+  },
+  {
+    "title": "Minecraft Datapacks",
+    "image": "assets/datapacks.jpg",
+    "description": "Over 350k downloads on custom Minecraft datapacks.",
+    "modalContent": "<p>My projects in Minecraft have over 350k downloads all together, with one datapack having 180k by itself! I love making datapacks since their limitations force me to come up with creative solutions, and because they allow me to enchance the gameplay of Minecraft.</p><a href=\"https://modrinth.com/user/Gurkis\" class=\"button-green\" target=\"_blank\">View on Modrinth</a>"
+  }
+]

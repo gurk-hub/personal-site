@@ -1,0 +1,545 @@
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
+    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
+    outline: none !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to top, #598120, #6F9B28);
+    color:#fff;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.dark-area {
+    background: linear-gradient(to left, #6f9b28,#598120);
+    /* background: #598120; */
+    padding-bottom: 15px;
+    padding-top: 15px;
+    margin-bottom: 25px;
+}
+
+.dark-area-inverted {
+    background: linear-gradient(to right, #6f9b28,#598120);
+    /* background: #598120; */
+    padding-bottom: 15px;
+    padding-top: 15px;
+    margin-bottom: 25px;
+}
+
+.Kanit-Title {
+    text-align: center;
+    font-family: "Kanit", serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 4.5em;
+    color:#fff;
+    margin: 0;
+}
+
+.Main-Title {
+    font-family: "Kanit", serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 4.5em;
+    color:#fff;
+    margin: 0;
+    padding-left:15%;
+}
+.Main-Subtitle {
+    font-family: "Kanit", serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 1.5em;
+    color:#fff;
+    margin: 0;
+    padding-left:15%;
+    padding-right:15%;
+}
+
+.Center-Text {
+    text-align: center;
+    padding-left:0%;
+}
+
+.Secondary-Title {
+    font-family: "Kanit", serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 2.5em;
+    color:#fff;
+    margin: 0;
+    text-align: center;
+}
+.Secondary-Text {
+    font-family: "Kanit", serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.2em;
+    line-height: 1.4;
+    color:#fff;
+    text-align: justify;
+    margin: 0;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+header {
+    font-family: "Kanit", serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 2.5em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.header-left {
+    align-items: center;
+}
+
+.header-left img {
+    margin-right: 0;
+    width: 50%;
+    height: auto;
+}
+
+button {
+  outline: none;
+  user-select: none;
+}
+
+
+
+.centered {
+    margin: auto;
+}
+
+button:focus-visible {
+  outline: 2px solid yellow; /* or your design choice */
+}
+
+.nav-buttons {
+    top: 50px;
+    right: 50px;
+    display: flex;
+    gap: 1rem;
+    margin-right: 5%;
+}
+
+.nav-buttons button {
+    background-color: #fff;
+    color: #598120;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: "Kanit", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.5em;
+}
+
+button:hover {
+    transform: scale(1.05) rotate(1.5deg);
+}
+
+.big-button {
+    font-family: "Kanit", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+    margin: 1rem;
+}
+
+.button-neon {
+  background: ffffff;
+  color: #598120;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  padding: 10px 24px;
+  text-shadow: 0 0 5px #ffffff;
+  box-shadow:
+    0 0 10px #ffffff,
+    0 0 20px #ffffff inset;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.button-green {
+    background-color: #598120;
+    color: #fff;
+    text-decoration: none; /* Remove the underline from the link */
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block; /* Make the link behave like a block-level element */
+    text-align: center; /* Center the text inside the link */
+    margin: 1rem;
+}
+
+.button-green:hover {
+    background-color: #6F9B28; /* Lighter shade for hover effect */
+    transform: scale(1.05) rotate(1.5deg);
+}
+
+.button-green:active {
+    transform: scale(1); /* Reset scale when the button is clicked */
+}
+
+.button-icon {
+    width:64px;
+    height:64px;
+    color: #fff;
+    text-decoration: none; /* Remove the underline from the link */
+    padding: 10px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block; /* Make the link behave like a block-level element */
+    text-align: center; /* Center the text inside the link */
+}
+
+.button-icon img {
+    width:64px;
+    height:64px;
+}
+
+.button-icon:hover {
+    background-color: #6F9B28; /* Lighter shade for hover effect */
+    transform: scale(1.05) rotate(1.5deg);
+}
+
+.button-icon:active {
+    transform: scale(1); /* Reset scale when the button is clicked */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 50px 20px;
+    margin-top: 150px;
+}
+
+
+.two-column-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+    flex-wrap: wrap;
+    padding-left: 15%; /* Optional padding around the grid */
+    padding-right: 15%;
+    padding-bottom: 1rem;
+}
+
+.three-column-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    flex-wrap: wrap;
+    gap: 5px; /* Space between items */
+    padding: 15px; /* Optional padding around the grid */
+}
+
+.center-items {
+    display: flex;
+    justify-content: center;  /* Centers horizontally */
+    align-items: center;      /* Centers vertically */
+    width: 100%;
+    height: 100%;
+}
+
+.project {
+    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+    cursor: grab;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project img:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
+}
+
+.gurkis img {
+    margin: 0;
+    width: 100%;
+    max-width: 300px; /* prevents it from getting too big on desktop */
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+    cursor: grab;
+    transition: transform 0.3s ease;
+    align-items: center;
+}
+
+.gurkis img:hover {
+    z-index: 10; /* Bring the image on top */
+    transform: scale(1.05) rotate(-1.5deg);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-image: linear-gradient(to right, #000000, #ffffff);
+  opacity: 0.5;
+  width: 0%;
+  transition: width 0s;
+  border-radius: 5px;
+}
+
+.gallery-image-wrapper {
+  position: relative;
+  display: none; /* Only show active one */
+}
+
+.gallery-image-wrapper.active {
+  display: block;
+}
+
+
+/* Reducing size for super small screens */
+@media (max-width: 711px) { 
+    .Main-Title {
+        font-size: 3.5em;
+    }
+    .modal-content{
+        width: 75%;
+    }
+}
+
+/* Header to Vertical */
+@media (max-width: 790px) {
+
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-left {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-right: 5%;
+    }
+
+    .gurkis img {
+        max-width: 75%;
+    }
+
+   
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .two-column-grid {
+        grid-template-columns: repeat(1, 1fr); /* 1 equal columns */
+    }
+    button {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .Main-Title{
+        text-align: center;
+        padding:0%;
+    }
+    .Main-Subtitle{
+        text-align: center;
+    }
+    .modal-content{
+        width: 90%;
+    }
+
+}
+
+.fade-in {
+    opacity: 0;               /* Start invisible */
+    animation: fadeIn 1.5s ease-in-out forwards; /* Fade in over 1.5s */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Optional: slight slide-up effect */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.fade-in-half {
+    opacity: 0;               /* Start invisible */
+    animation: fadeIn 1.5s ease-in-out forwards; /* Fade in over 1.5s */
+}
+
+@keyframes fadeIn-half {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Optional: slight slide-up effect */
+    }
+    to {
+        opacity: 0.5;
+        transform: translateY(0);
+    }
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    color: #000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-height: 90vh; /* Make sure the modaldoesn't overflow the screen */
+    overflow-y: auto; /* Allow scrolling if content exceeds the modalheight */
+}
+
+.modal-title {
+    margin: 0px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between; /* Aligns title and close button */
+    width: 100%;
+    align-items: center;
+}
+
+.close {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: black;
+}
+
+.video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #6F9B28;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 10px;
+    font-size: 18px;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: #72a02a;
+}
+
+.image-gallery {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+    padding-bottom: 16px;
+}
+
+.gallery-container {
+    position: relative;
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+
+.gallery-image {
+    width: 100%;
+    height: auto;
+    transition: opacity 1s ease-in-out;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: grab;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    display: block; /* Ensure images are hidden initially */
+}
+
+/* Optional: Add a simple overlay to indicate image focus */
+.gallery-image:focus {
+    outline: 1;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #598120;
+    color: #fff;
+}

@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="assets/logo.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="components/stylesheet.css">
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="dark-area fade-in-half"> 
+        <p class="Main-Title fade-in">Hi, I'm Gurkis</p>
+        <p class="Main-Subtitle fade-in">I specialize in creating fun, unique and long-lasting experiences in UEFN.</p>
+        <p class="Main-Subtitle fade-in">Available for commissioning.</p>
+    </div>
+    <div class="dark-area-inverted fade-in-half" style="text-align: center;">
+        <button class="button-neon big-button fade-in" onclick="location.href='projects.html'">Check out my projects</button>
+        <div id="homepage-gallery" class="image-gallery"></div>
+    </div>
+
+
+    <div id="footer"></div>
+    <script src="components/baseScript.js"></script>
+    <script src="components/gallery.js"></script>
+    <script>
+        fetch('components/portfolioItems.json')
+        .then(response => response.json())
+        .then(portfolioItems => {
+        const gallery = document.getElementById('homepage-gallery');
+
+        // Create gallery-image-wrapper for each portfolio image
+        portfolioItems.forEach(item => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'gallery-image-wrapper';
+
+            const img = document.createElement('img');
+            img.src = item.image;
+            img.alt = item.title;
+            img.className = 'gallery-image';
+
+            const progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar';
+
+            wrapper.appendChild(img);
+            wrapper.appendChild(progressBar);
+            gallery.appendChild(wrapper);
+        });
+
+        // Now initialize your gallery cycling function on this gallery
+        initializeGallery(gallery);
+        })
+        .catch(err => console.error('Error loading portfolio:', err));
+    </script>
+</body>
+</html>
