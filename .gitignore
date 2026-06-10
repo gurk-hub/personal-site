@@ -1,0 +1,11 @@
+# Local image backups (originals kept after WebP conversion)
+assets/_originals/
+
+# OS / editor cruft
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+
+# Claude tooling
+.claude/

@@ -1,0 +1,35 @@
+name: Refresh stats
+
+# Runs the Modrinth + Fortnite fetcher once a day, commits the updated
+# stats.json, and serves it via GitHub Pages for the live site to read.
+
+on:
+  schedule:
+    - cron: '17 6 * * *'   # daily at ~06:17 UTC
+  workflow_dispatch:        # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch stats
+        run: |
+          export STATS_TIMESTAMP="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          python fetch_stats.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "stats-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add stats.json
+          git diff --staged --quiet || git commit -m "chore: refresh stats"
+          git push
