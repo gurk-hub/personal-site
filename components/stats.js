@@ -5,7 +5,7 @@
 // then (and as a fallback) it reads the local stats.json bundled with the site.
 //
 //   STATS_REMOTE example: 'https://YOUR_GH_USERNAME.github.io/portfolio-stats/stats.json'
-const STATS_REMOTE = '';            // <-- paste your GitHub Pages stats URL here
+const STATS_REMOTE = 'https://gurk-hub.github.io/portfolio/stats.json';
 const STATS_LOCAL  = 'stats.json';  // bundled fallback
 
 async function fetchStats() {
