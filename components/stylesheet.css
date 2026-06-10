@@ -143,19 +143,23 @@ button:focus-visible {
 }
 
 .nav-buttons button {
-    background-color: #fff;
-    color: #598120;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
+    color: #3f5e0e;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 0.5rem 1.2rem;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #fcfff6 0%, #eef8df 49%, #d9eeb8 50%, #c6e29c 100%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    transition: filter 0.25s ease, transform 0.3s ease, box-shadow 0.3s ease;
     font-family: "Kanit", serif;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     font-size: 0.5em;
+}
+
+.nav-buttons button:hover {
+    filter: brightness(1.06);
 }
 
 button:hover {
@@ -170,41 +174,62 @@ button:hover {
     margin: 1rem;
 }
 
+/* Frutiger Aero "aqua" glossy buttons.
+   The 49%/50% gradient split gives the classic shiny highlight band. */
 .button-neon {
-  background: ffffff;
-  color: #598120;
-  border: 2px solid #ffffff;
-  border-radius: 10px;
+  color: #3f5e0e;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
   padding: 10px 24px;
-  text-shadow: 0 0 5px #ffffff;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: linear-gradient(to bottom, #fcfff6 0%, #eef8df 49%, #d9eeb8 50%, #c6e29c 100%);
   box-shadow:
-    0 0 10px #ffffff,
-    0 0 20px #ffffff inset;
-  transition: 0.3s ease;
+    0 2px 7px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -10px 14px rgba(255, 255, 255, 0.3);
+  transition: filter 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
 }
 
+.button-neon:hover {
+  filter: brightness(1.06);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 0 16px rgba(173, 226, 90, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
 .button-green {
-    background-color: #598120;
     color: #fff;
     text-decoration: none; /* Remove the underline from the link */
-    padding: 10px 20px;
+    padding: 10px 22px;
+    font-family: "Kanit", serif;
+    font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(to bottom, #a9dd62 0%, #8cc63f 49%, #6f9b28 50%, #5d8420 100%);
+    box-shadow:
+        0 2px 7px rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.7),
+        inset 0 -10px 14px rgba(0, 0, 0, 0.08);
+    transition: filter 0.25s ease, transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-block; /* Make the link behave like a block-level element */
     text-align: center; /* Center the text inside the link */
-    margin: 1rem;
+    margin: 0.6rem 0.4rem;
 }
 
 .button-green:hover {
-    background-color: #6F9B28; /* Lighter shade for hover effect */
+    filter: brightness(1.08);
     transform: scale(1.05) rotate(1.5deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), 0 0 16px rgba(173, 226, 90, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.7);
 }
 
 .button-green:active {
     transform: scale(1); /* Reset scale when the button is clicked */
+    filter: brightness(0.97);
 }
 
 .button-icon {
@@ -215,7 +240,10 @@ button:hover {
     padding: 10px 10px;
     cursor: pointer;
     border-radius: 50%;
-    transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.14) 49%, rgba(110,155,40,0.22) 50%, rgba(89,129,32,0.3) 100%);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+    transition: filter 0.25s ease, transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-block; /* Make the link behave like a block-level element */
     text-align: center; /* Center the text inside the link */
 }
@@ -223,11 +251,13 @@ button:hover {
 .button-icon img {
     width:64px;
     height:64px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
 }
 
 .button-icon:hover {
-    background-color: #6F9B28; /* Lighter shade for hover effect */
-    transform: scale(1.05) rotate(1.5deg);
+    filter: brightness(1.1);
+    transform: scale(1.08) rotate(1.5deg);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.32), 0 0 16px rgba(173, 226, 90, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
 .button-icon:active {
@@ -437,46 +467,83 @@ button:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(18, 38, 8, 0.55);
     justify-content: center;
     align-items: center;
-    color: #000;
+    color: #2a2a2a;
 }
 
 .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
+    padding: 0;
+    border-radius: 18px;
+    max-width: 640px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
-    max-height: 90vh; /* Make sure the modaldoesn't overflow the screen */
-    overflow-y: auto; /* Allow scrolling if content exceeds the modalheight */
+    align-items: stretch;
+    overflow: hidden;
+    max-height: 90vh;
+    background: linear-gradient(to bottom, #ffffff 0%, #f1f7e8 100%);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-.modal-title {
-    margin: 0px;
-}
-
+/* glossy green header bar */
 .modal-header {
     display: flex;
     justify-content: space-between; /* Aligns title and close button */
     width: 100%;
     align-items: center;
+    box-sizing: border-box;
+    padding: 14px 20px;
+    background: linear-gradient(to bottom, #8cc63f 0%, #7aad33 49%, #6f9b28 50%, #5d8420 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+    margin: 0;
+    font-family: "Kanit", serif;
+    font-weight: 800;
+    font-style: italic;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .close {
-    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 22px;
     font-weight: bold;
+    line-height: 1;
     cursor: pointer;
-    color: #aaa;
-    transition: color 0.3s;
+    color: #5d8420;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.55));
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .close:hover {
-    color: black;
+    color: #3f5e0e;
+    transform: scale(1.12) rotate(90deg);
+}
+
+/* padded, readable body below the header */
+.modal-body {
+    padding: 20px 22px 22px 22px;
+    overflow-y: auto;
+    font-family: "Kanit", serif;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #2c2c2c;
+}
+
+.modal-body p {
+    margin-top: 0;
 }
 
 .video {
@@ -491,19 +558,24 @@ button:hover {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #6F9B28;
     color: white;
-    border: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 50%;
-    padding: 10px 10px;
+    width: 46px;
+    height: 46px;
+    padding: 0;
     font-size: 18px;
     cursor: pointer;
     display: none; /* Hidden by default */
-    transition: opacity 0.3s ease;
+    background: linear-gradient(to bottom, #a9dd62 0%, #8cc63f 49%, #6f9b28 50%, #5d8420 100%);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+    transition: filter 0.25s ease, transform 0.25s ease;
 }
 
 .back-to-top:hover {
-    background-color: #72a02a;
+    filter: brightness(1.08);
+    transform: scale(1.08);
 }
 
 .image-gallery {
@@ -605,4 +677,197 @@ footer {
     .stat-number {
         font-size: 2em;
     }
+}
+
+/* =========================================================
+   Projects: Frutiger Aero / Vista glass cards + filtering
+   ========================================================= */
+
+/* ---- Filter bar (glossy aqua pills) ---- */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0 8%;
+    margin: 0.5rem auto 1.5rem auto;
+}
+
+.filter-chip {
+    font-family: "Kanit", serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #41600f;
+    padding: 0.5rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.75) 48%, rgba(214,235,184,0.7) 52%, rgba(198,226,158,0.75) 100%);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.95);
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-chip:hover {
+    transform: translateY(-1px) scale(1.04);
+    filter: brightness(1.05);
+}
+
+.filter-chip.active {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+    border-color: rgba(255,255,255,0.9);
+    background: linear-gradient(to bottom, #b6e85f 0%, #8fc63d 48%, #6f9b28 52%, #5d8420 100%);
+    box-shadow: 0 0 12px rgba(173,226,90,0.6), 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+/* ---- Card grids ---- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 0 8% 2rem 8%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#featured-section {
+    padding: 0 8%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 0.5rem 0 2rem 0;
+}
+
+@media (max-width: 768px) {
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---- The glass card itself ---- */
+.aero-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(110,155,40,0.22));
+    border: 1px solid rgba(255,255,255,0.55);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.65);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+/* glossy sheen across the top half */
+.aero-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 48%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0));
+    pointer-events: none;
+    z-index: 3;
+}
+
+.aero-card:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.35), 0 0 18px rgba(173,226,90,0.45), inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.aero-card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+}
+
+.aero-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.aero-card:hover .aero-card-media img {
+    transform: scale(1.06);
+}
+
+/* category badge (frosted pill, top-left) */
+.aero-cat {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 4;
+    font-family: "Kanit", serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    padding: 0.22rem 0.7rem;
+    border-radius: 999px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.38), rgba(0,0,0,0.22));
+    border: 1px solid rgba(255,255,255,0.45);
+}
+
+.aero-card-body {
+    position: relative;
+    z-index: 2;
+    padding: 0.9rem 1.1rem 1.1rem 1.1rem;
+}
+
+.aero-card-title {
+    font-family: "Kanit", serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #fff;
+    margin: 0 0 0.3rem 0;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+}
+
+.aero-card-desc {
+    font-family: "Kanit", serif;
+    font-weight: 300;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    color: #f3f8ea;
+    margin: 0 0 0.7rem 0;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+.aero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.aero-tag {
+    font-family: "Kanit", serif;
+    font-weight: 500;
+    font-size: 0.74rem;
+    color: #fff;
+    padding: 0.18rem 0.65rem;
+    border-radius: 999px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.32), rgba(255,255,255,0.14));
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+/* featured cards: a touch grander */
+.aero-card--featured .aero-card-media {
+    aspect-ratio: 16 / 9;
+}
+
+.aero-card--featured .aero-card-title {
+    font-size: 1.9rem;
+}
+
+.aero-card--featured .aero-card-desc {
+    font-size: 1rem;
 }

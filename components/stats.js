@@ -36,10 +36,12 @@ function renderStats(data) {
     const m = data.modrinth || {};
     const f = data.fortnite || {};
     const values = {
-        downloads: m.downloads,
-        followers: m.followers,
-        plays_7d:  f.plays_7d,
-        hours_7d:  f.hours_7d,
+        downloads:     m.downloads,
+        followers:     m.followers,    // Modrinth followers (still available if used)
+        fn_favorites:  f.favorites,    // fortnite.gg lifetime favorites
+        fn_followers:  f.followers,    // fortnite.gg followers
+        plays_7d:      f.plays_7d,
+        hours_7d:      f.hours_7d,
     };
     document.querySelectorAll('#stats [data-stat]').forEach(el => {
         const v = values[el.getAttribute('data-stat')];

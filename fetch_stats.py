@@ -15,6 +15,7 @@ import urllib.request
 import urllib.error
 
 MODRINTH_USER = "Gurkis"
+FORTNITE_CREATOR = "gurkis"  # fortnite.gg / Epic creator handle
 
 # Only islands that are clearly Gurkis's own. (Melon Run is a charity collab
 # published under another creator, so its plays aren't attributable here.)
@@ -25,10 +26,13 @@ ISLANDS = {
 }
 
 UA = "gurkis-portfolio-stats/1.0 (+https://github.com)"
+# fortnite.gg's API rejects unknown user-agents, so use a browser-like one there.
+BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
 
-def get_json(url):
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
+def get_json(url, user_agent=UA):
+    req = urllib.request.Request(url, headers={"User-Agent": user_agent})
     with urllib.request.urlopen(req, timeout=20) as r:
         return json.load(r)
 
@@ -68,12 +72,26 @@ def fortnite_stats():
         if p:
             islands_with_data += 1
         print(f"  {name}: {p} plays (7d)")
-    return {
+    result = {
         "plays_7d": plays,
         "hours_7d": round(minutes / 60),
         "peak_ccu": peak_ccu,
         "active_islands": islands_with_data,
     }
+
+    # Lifetime creator totals (followers + favorites) via fortnite.gg's API.
+    # Epic's official API has no lifetime/follower data, so this fills the gap.
+    try:
+        gg = get_json(f"https://fortnite.gg/api/creator?name={FORTNITE_CREATOR}",
+                      user_agent=BROWSER_UA)
+        result["followers"] = int(gg.get("followers", 0) or 0)
+        result["favorites"] = int(gg.get("favorites", 0) or 0)
+        print(f"  fortnite.gg: {result['followers']} followers, "
+              f"{result['favorites']} favorites")
+    except (urllib.error.URLError, urllib.error.HTTPError, ValueError) as e:
+        print(f"  ! fortnite.gg creator API failed: {e}")
+
+    return result
 
 
 def main():
