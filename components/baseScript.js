@@ -32,7 +32,7 @@ function setupLogoHover() {
     const brand = logo.closest('a');
     if (brand) {
         brand.addEventListener('click', (e) => {
-            if (logo.src.includes('gurkstamp_nobg2')) {
+            if (logo.src.includes('gurkstamp_nobg1')) {
                 e.preventDefault();
                 window.location.href = 'gurkis.html';
             }
