@@ -1,0 +1,21 @@
+[
+  {
+    "title": "Welcome to the feed!",
+    "date": "2026-06-11",
+    "game": null,
+    "body": "This is where I'll post **devlogs, updates and news** across all my games.\n\nPosts tagged with a game also show up on that game's page. More soon!"
+  },
+  {
+    "title": "Battle43 — new vehicle update",
+    "date": "2026-06-10",
+    "game": "battle43",
+    "image": "assets/b43s2.webp",
+    "body": "Working on adding new **drivable vehicles** to Battle43, plus some fixes to the capture-point system.\n\n- New tank handling\n- Smoother first-person transitions\n- Capture-point UI polish"
+  },
+  {
+    "title": "Just Drive is getting a new version",
+    "date": "2026-06-08",
+    "game": "just-drive",
+    "body": "I've started rebuilding Just Drive in UEFN with a bigger open world and proper car upgrades. Stay tuned!"
+  }
+]

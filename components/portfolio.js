@@ -53,7 +53,11 @@ fetch('components/portfolioItems.json')
                 <div class="aero-tags">${tagChips(item.tags)}</div>
             </div>
         `;
-        card.addEventListener('click', () => openModal(index));
+        if (item.hasPage && item.slug) {
+            card.addEventListener('click', () => { window.location.href = `game.html?id=${item.slug}`; });
+        } else {
+            card.addEventListener('click', () => openModal(index));
+        }
         return card;
     }
 

@@ -871,3 +871,134 @@ footer {
 .aero-card--featured .aero-card-desc {
     font-size: 1rem;
 }
+
+/* =========================================================
+   Game pages + posts feed
+   ========================================================= */
+.text-link { color: #fff; text-decoration: underline; }
+
+#game-hero .game-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+}
+
+#game-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 6% 2rem 6%;
+}
+
+.game-content-inner {
+    font-family: "Kanit", serif;
+    font-weight: 300;
+    line-height: 1.55;
+    font-size: 1.05rem;
+    text-align: center;
+}
+
+.game-content-inner p { margin: 0 0 1rem 0; }
+
+#game-feed { margin-top: 2rem; }
+
+/* ---- Post list (feed + game page) ---- */
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 800px;
+    margin: 0.5rem auto 0 auto;
+    padding: 0 6% 2rem 6%;
+}
+
+.post-card {
+    display: flex;
+    gap: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(110,155,40,0.22));
+    border: 1px solid rgba(255,255,255,0.55);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.post-media {
+    flex: 0 0 200px;
+    overflow: hidden;
+}
+
+.post-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.post-body {
+    padding: 1rem 1.2rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.35rem;
+}
+
+.post-date {
+    font-family: "Kanit", serif;
+    font-weight: 300;
+    font-size: 0.82rem;
+    color: #eef5e2;
+    opacity: 0.85;
+}
+
+.post-game-tag {
+    font-family: "Kanit", serif;
+    font-weight: 600;
+    font-size: 0.74rem;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.18rem 0.7rem;
+    border-radius: 999px;
+    background: linear-gradient(to bottom, #a9dd62, #6f9b28);
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.post-game-tag:hover { filter: brightness(1.08); transform: scale(1.04); }
+
+.post-title {
+    font-family: "Kanit", serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #fff;
+    margin: 0 0 0.4rem 0;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.post-content {
+    font-family: "Kanit", serif;
+    font-weight: 300;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    color: #f3f8ea;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.post-content p { margin: 0 0 0.6rem 0; }
+.post-content ul, .post-content ol { margin: 0.3rem 0 0.6rem 1.2rem; }
+.post-content a { color: #fff; text-decoration: underline; }
+.post-content strong { font-weight: 700; }
+
+@media (max-width: 640px) {
+    .post-card { flex-direction: column; }
+    .post-media { flex: 0 0 auto; max-height: 200px; }
+}

@@ -1,6 +1,8 @@
 [
   {
     "title": "Battle43",
+    "slug": "battle43",
+    "hasPage": true,
     "image": "assets/Battle43Pacific.webp",
     "description": "A Battlefield-style shooter made in Fortnite UEFN.",
     "category": "Fortnite",
@@ -10,6 +12,8 @@
   },
   {
     "title": "Just Drive",
+    "slug": "just-drive",
+    "hasPage": true,
     "image": "assets/justdrive.webp",
     "description": "Arcade-inspired street racing game with cop chases.",
     "category": "Fortnite",
@@ -19,6 +23,8 @@
   },
   {
     "title": "Just Drive: Burning Rubber",
+    "slug": "burning-rubber",
+    "hasPage": false,
     "image": "assets/burningrubber.webp",
     "description": "A racing-focused city driving game in Fortnite.",
     "category": "Fortnite",
@@ -28,6 +34,8 @@
   },
   {
     "title": "Melon Run",
+    "slug": "melon-run",
+    "hasPage": false,
     "image": "assets/charity.webp",
     "description": "A collaborative parkour map for charity.",
     "category": "Collabs",
@@ -37,6 +45,8 @@
   },
   {
     "title": "Constant Survival",
+    "slug": "constant-survival",
+    "hasPage": false,
     "image": "assets/constsurv.webp",
     "description": "The first proper survival game in Fortnite.",
     "category": "Fortnite",
@@ -46,6 +56,8 @@
   },
   {
     "title": "Cache Gun Game",
+    "slug": "cache-gun-game",
+    "hasPage": false,
     "image": "assets/cache.webp",
     "description": "A recreation of CS:GO's Cache in Fortnite.",
     "category": "Fortnite",
@@ -55,6 +67,8 @@
   },
   {
     "title": "Other Projects",
+    "slug": "other-projects",
+    "hasPage": false,
     "image": "assets/otherprojects.webp",
     "description": "Collection of 50+ past Fortnite projects.",
     "category": "Other",
@@ -64,6 +78,8 @@
   },
   {
     "title": "Minecraft Datapacks",
+    "slug": "minecraft-datapacks",
+    "hasPage": false,
     "image": "assets/datapacks.webp",
     "description": "1.8M+ downloads on custom Minecraft datapacks.",
     "category": "Minecraft",
