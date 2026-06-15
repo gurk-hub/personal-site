@@ -8,7 +8,7 @@
 
     let items = [];
     try {
-        items = await (await fetch('components/portfolioItems.json')).json();
+        items = await (await fetch('components/portfolioItems.json', { cache: 'no-store' })).json();
     } catch (_) { /* handled below */ }
 
     const game = items.find(it => it.slug === id);

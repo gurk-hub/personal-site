@@ -1,12 +1,44 @@
 
 async function loadComponent(id, file) {
-    const res = await fetch(file);
+    const res = await fetch(file, { cache: 'no-store' });
     const html = await res.text();
     document.getElementById(id).innerHTML = html;
 }
 
-loadComponent("header", "components/header.html");
+loadComponent("header", "components/header.html").then(setupLogoHover);
 loadComponent("footer", "components/footer.html");
+
+// ---- Gurkis logo: randomly swap to a variation on hover ----
+// Easter egg: clicking the logo goes home, UNLESS it's currently showing the
+// "...2" variation — then it opens the secret page.
+function setupLogoHover() {
+    const logo = document.querySelector('.gurkis img');
+    if (!logo) return;
+    const DEFAULT = 'assets/gurkstamp_nobg.png';
+    const VARIATIONS = [
+        'assets/gurkstamp_nobg1.png',
+        'assets/gurkstamp_nobg2.png',
+        'assets/gurkstamp_nobg3.png',
+    ];
+    VARIATIONS.forEach(src => { const img = new Image(); img.src = src; }); // preload
+
+    logo.addEventListener('mouseenter', () => {
+        logo.src = VARIATIONS[Math.floor(Math.random() * VARIATIONS.length)];
+    });
+    logo.addEventListener('mouseleave', () => {
+        logo.src = DEFAULT;
+    });
+
+    const brand = logo.closest('a');
+    if (brand) {
+        brand.addEventListener('click', (e) => {
+            if (logo.src.includes('gurkstamp_nobg2')) {
+                e.preventDefault();
+                window.location.href = 'gurkis.html';
+            }
+        });
+    }
+}
 
 // ---- Private visitor analytics (GoatCounter) ----
 // Loads on every page (this script is included site-wide). The dashboard is

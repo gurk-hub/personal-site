@@ -5,7 +5,7 @@
 
     let items = [];
     try {
-        items = await (await fetch('components/portfolioItems.json')).json();
+        items = await (await fetch('components/portfolioItems.json', { cache: 'no-store' })).json();
     } catch (_) { /* feed still works without game titles */ }
     const titleBySlug = Object.fromEntries(items.map(it => [it.slug, it.title]));
 

@@ -1,4 +1,4 @@
-fetch('components/portfolioItems.json')
+fetch('components/portfolioItems.json', { cache: 'no-store' })
 .then(response => response.json())
 .then(portfolioItems => {
     const container = document.getElementById('portfolio-container');

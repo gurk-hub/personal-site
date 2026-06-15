@@ -8,6 +8,7 @@
     "category": "Fortnite",
     "tags": ["Shooter", "FPS", "UEFN"],
     "featured": true,
+    "highlight": "Played by Battlefield content creators",
     "modalContent": "<p>Battle43 is like a remaster of Battlefield 1943 inside Fortnite, complete with vehicles, classes, and Conquest mode. I created 90% of the models myself, and the rest of the game was all me as well. There are a lot of custom systems, like completely custom UI, capture points, round system, destruction, first person mode & more. Battle43 has received great reviews from Battlefield content creators!<br><br>Released March 2024.</p><div class=\"image-gallery\"><div class=\"gallery-container\"><div class=\"gallery-image-wrapper\"><img src=\"assets/b43s1.webp\" alt=\"Image 1\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div><div class=\"gallery-image-wrapper\"><img src=\"assets/b43s2.webp\" alt=\"Image 2\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div><div class=\"gallery-image-wrapper\"><img src=\"assets/b43s3.webp\" alt=\"Image 3\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div></div><div class=\"progress-bar\"></div></div><span><a href=\"https://www.fortnite.com/@gurkis/1322-0197-1845\" class=\"button-green\" target=\"_blank\">Play Now</a><a href=\"https://discord.com/invite/qcy8GRW6nQ\" class=\"button-green\" target=\"_blank\">Discord</a><a href=\"https://www.youtube.com/watch?v=QuKTzJKIw7s\" class=\"button-green\" target=\"_blank\">Trailer</a><a href=\"https://www.youtube.com/watch?v=yo-znZGhCi8\" class=\"button-green\" target=\"_blank\">Review Video</a></span>"
   },
   {
@@ -15,10 +16,11 @@
     "slug": "just-drive",
     "hasPage": true,
     "image": "assets/justdrive.webp",
-    "description": "Arcade-inspired street racing game with cop chases.",
+    "description": "Open world driving game with lots of replayability!",
     "category": "Fortnite",
-    "tags": ["Driving", "Open World"],
+    "tags": ["Driving", "Open World", "FN Creative"],
     "featured": true,
+    "highlight": "#1 Driving game for 3+ years · Featured by Epic Games",
     "modalContent": "<p>The first of its kind open-world driving game in Fortnite. Large open world to freely drive around. Complete deliveries to earn coins. Spend coins on a new car, special items and car upgrades! <br><br>It was very popular for two years with constant updates and engagement from fans. It was featured by Epic Games.<br><br>Created in Fortnite Creative, so I had to abandon the project when UEFN came out. I am working on new versions of it.<br><br>Released May 2021.</p><span><a href=\"https://www.fortnite.com/@gurkis/7882-5895-5239\" class=\"button-green\" target=\"_blank\">Play Now</a><a href=\"https://www.youtube.com/embed/SvmBOfU5FiY\" class=\"button-green\" target=\"_blank\">Trailer</a><a href=\"https://x.com/JustDriveFN\" class=\"button-green\" target=\"_blank\">Twitter</a></span>"
   },
   {
