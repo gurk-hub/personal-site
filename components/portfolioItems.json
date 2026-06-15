@@ -8,6 +8,7 @@
     "category": "Fortnite",
     "tags": ["Shooter", "FPS", "UEFN"],
     "featured": true,
+    "accent": "#b8862b",
     "highlight": "Played by Battlefield content creators",
     "modalContent": "<p>Battle43 is like a remaster of Battlefield 1943 inside Fortnite, complete with vehicles, classes, and Conquest mode. I created 90% of the models myself, and the rest of the game was all me as well. There are a lot of custom systems, like completely custom UI, capture points, round system, destruction, first person mode & more. Battle43 has received great reviews from Battlefield content creators!<br><br>Released March 2024.</p><div class=\"image-gallery\"><div class=\"gallery-container\"><div class=\"gallery-image-wrapper\"><img src=\"assets/b43s1.webp\" alt=\"Image 1\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div><div class=\"gallery-image-wrapper\"><img src=\"assets/b43s2.webp\" alt=\"Image 2\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div><div class=\"gallery-image-wrapper\"><img src=\"assets/b43s3.webp\" alt=\"Image 3\" class=\"gallery-image\"><div class=\"progress-bar\"></div></div></div><div class=\"progress-bar\"></div></div><span><a href=\"https://www.fortnite.com/@gurkis/1322-0197-1845\" class=\"button-green\" target=\"_blank\">Play Now</a><a href=\"https://discord.com/invite/qcy8GRW6nQ\" class=\"button-green\" target=\"_blank\">Discord</a><a href=\"https://www.youtube.com/watch?v=QuKTzJKIw7s\" class=\"button-green\" target=\"_blank\">Trailer</a><a href=\"https://www.youtube.com/watch?v=yo-znZGhCi8\" class=\"button-green\" target=\"_blank\">Review Video</a></span>"
   },
@@ -20,6 +21,7 @@
     "category": "Fortnite",
     "tags": ["Driving", "Open World", "FN Creative"],
     "featured": true,
+    "accent": "#e8632a",
     "highlight": "#1 Driving game for 3+ years · Featured by Epic Games",
     "modalContent": "<p>The first of its kind open-world driving game in Fortnite. Large open world to freely drive around. Complete deliveries to earn coins. Spend coins on a new car, special items and car upgrades! <br><br>It was very popular for two years with constant updates and engagement from fans. It was featured by Epic Games.<br><br>Created in Fortnite Creative, so I had to abandon the project when UEFN came out. I am working on new versions of it.<br><br>Released May 2021.</p><span><a href=\"https://www.fortnite.com/@gurkis/7882-5895-5239\" class=\"button-green\" target=\"_blank\">Play Now</a><a href=\"https://www.youtube.com/embed/SvmBOfU5FiY\" class=\"button-green\" target=\"_blank\">Trailer</a><a href=\"https://x.com/JustDriveFN\" class=\"button-green\" target=\"_blank\">Twitter</a></span>"
   },
@@ -68,6 +70,39 @@
     "modalContent": "<p>A recreation of Cache from CS:GO. It was a great learning experience to recreate a professional map like this.<br><br>Released March 2021.</p>"
   },
   {
+    "title": "Mafia Heist",
+    "slug": "mafia-heist",
+    "hasPage": false,
+    "image": "assets/mafiaheist.webp",
+    "description": "A co-op mafia roguelike made for Coremaps.",
+    "category": "Fortnite",
+    "tags": ["Coremaps", "UEFN", "Roguelike"],
+    "featured": false,
+    "modalContent": "<p>The ultimate mafia roguelike in Fortnite, made while working for Coremaps. Play solo or co-op with up to 4 players, upgrade fusion guns, fight unique bosses and race the speedrun leaderboard.</p><span><a href=\"https://www.fortnite.com/@coremaps/5496-4456-1570\" class=\"button-green\" target=\"_blank\">Play Now</a></span>"
+  },
+  {
+    "title": "Mafia Heist 2",
+    "slug": "mafia-heist-2",
+    "hasPage": false,
+    "image": "assets/mafiaheist2.webp",
+    "description": "The sequel — Mafia Cards and a Prestige system.",
+    "category": "Fortnite",
+    "tags": ["Coremaps", "UEFN", "Roguelike"],
+    "featured": false,
+    "modalContent": "<p>The sequel to Mafia Heist, made for Coremaps. Adds collectible Mafia Cards to play with and a Prestige system (up to level 10) with upgrades to life skills, damage, weapons and more.</p><span><a href=\"https://www.fortnite.com/@coremaps/3793-8653-7610\" class=\"button-green\" target=\"_blank\">Play Now</a></span>"
+  },
+  {
+    "title": "Star Wars Breakout",
+    "slug": "star-wars-breakout",
+    "hasPage": false,
+    "image": "assets/starwarsbreakout.webp",
+    "description": "A Star Wars roguelike made for Coremaps.",
+    "category": "Fortnite",
+    "tags": ["Coremaps", "UEFN", "Roguelike"],
+    "featured": false,
+    "modalContent": "<p>A Star Wars roguelike made for Coremaps. Battle unique bosses, upgrade fusion guns in the weapons shop, and escape a new world to complete your run — as fast as you can for the leaderboard.</p><span><a href=\"https://www.fortnite.com/@coremaps/0301-1593-0449\" class=\"button-green\" target=\"_blank\">Play Now</a></span>"
+  },
+  {
     "title": "Other Projects",
     "slug": "other-projects",
     "hasPage": false,
@@ -79,14 +114,36 @@
     "modalContent": "<p>Over the years I have released over 50 projects in Fortnite. Many of which are outdated now, but each had a lot of love and effort put into them.</p><div class=\"three-column-grid\"><div class=\"project\"><img src=\"assets/op1.webp\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op2.webp\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op3.webp\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op4.webp\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op5.webp\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op6.webp\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op7.webp\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op8.webp\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op9.webp\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op10.webp\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op11.webp\" alt=\"Project\"></div><div class=\"project\"><img src=\"assets/op12.webp\" alt=\"Project\"></div></div>"
   },
   {
-    "title": "Minecraft Datapacks",
-    "slug": "minecraft-datapacks",
+    "title": "Gardener's Dream",
+    "slug": "gardeners-dream",
     "hasPage": false,
-    "image": "assets/datapacks.webp",
-    "description": "1.8M+ downloads on custom Minecraft datapacks.",
+    "image": "assets/gardenersdream.webp",
+    "description": "Place any plant in flower pots, player heads and more.",
     "category": "Minecraft",
-    "tags": ["Datapacks"],
+    "tags": ["Datapack"],
     "featured": false,
-    "modalContent": "<p>My projects in Minecraft have over 350k downloads all together, with one datapack having 180k by itself! I love making datapacks since their limitations force me to come up with creative solutions, and because they allow me to enchance the gameplay of Minecraft.</p><a href=\"https://modrinth.com/user/Gurkis\" class=\"button-green\" target=\"_blank\">View on Modrinth</a>"
+    "modalContent": "<p>Allows you to place any plant in flower pots, decorated pots, player heads and half-pots.<br><br>Over 1.3 million downloads on Modrinth — my most popular datapack!</p><a href=\"https://modrinth.com/datapack/gardeners-dream\" class=\"button-green\" target=\"_blank\">View on Modrinth</a>"
+  },
+  {
+    "title": "Banner Flags",
+    "slug": "banner-flags",
+    "hasPage": false,
+    "image": "assets/bannerflags.webp",
+    "description": "Place banners horizontally as flags on fences, walls and poles.",
+    "category": "Minecraft",
+    "tags": ["Datapack"],
+    "featured": false,
+    "modalContent": "<p>Place banners horizontally as flags on fences, walls and other pole-like blocks!<br><br>Over 315,000 downloads on Modrinth.</p><a href=\"https://modrinth.com/datapack/banner-flags\" class=\"button-green\" target=\"_blank\">View on Modrinth</a>"
+  },
+  {
+    "title": "Banner Bedsheets",
+    "slug": "banner-bedsheets",
+    "hasPage": false,
+    "image": "assets/bannerbedsheets.webp",
+    "description": "Customize your bedsheets with any banner design!",
+    "category": "Minecraft",
+    "tags": ["Datapack"],
+    "featured": false,
+    "modalContent": "<p>Customize your bedsheets with any banner design — make your bed stand out!<br><br>Over 115,000 downloads on Modrinth.</p><a href=\"https://modrinth.com/datapack/banner-bedsheets\" class=\"button-green\" target=\"_blank\">View on Modrinth</a>"
   }
 ]

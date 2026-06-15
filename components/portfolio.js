@@ -61,23 +61,6 @@ fetch('components/portfolioItems.json', { cache: 'no-store' })
         return card;
     }
 
-    // --- Featured spotlight (shown only when filter = All) ---
-    const featured = portfolioItems
-        .map((item, index) => ({ item, index }))
-        .filter(x => x.item.featured);
-
-    let featuredSection = null;
-    if (featured.length) {
-        featuredSection = document.createElement('div');
-        featuredSection.id = 'featured-section';
-        featuredSection.innerHTML = `<p class="Secondary-Title">⭐ Featured</p>`;
-        const fgrid = document.createElement('div');
-        fgrid.className = 'featured-grid';
-        featured.forEach(({ item, index }) => fgrid.appendChild(makeCard(item, index, true)));
-        featuredSection.appendChild(fgrid);
-        portfolio.insertBefore(featuredSection, container);
-    }
-
     // --- Filter bar (only categories that actually exist) ---
     const order = ['Fortnite', 'Minecraft', 'Collabs', 'Other'];
     const present = order.filter(c => portfolioItems.some(it => (it.category || 'Other') === c));
@@ -105,7 +88,6 @@ fetch('components/portfolioItems.json', { cache: 'no-store' })
         cards.forEach(c => {
             c.style.display = (f === 'all' || c.dataset.category === f) ? '' : 'none';
         });
-        if (featuredSection) featuredSection.style.display = (f === 'all') ? '' : 'none';
     });
 })
 .catch(err => console.error('Error loading portfolio:', err));

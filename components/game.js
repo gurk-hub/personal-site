@@ -23,6 +23,14 @@
 
     document.title = game.title;
 
+    // Per-game personality: banner image + accent colour
+    hero.style.setProperty('--accent', game.accent || 'var(--green)');
+    const banner = game.banner || game.image;
+    if (banner) {
+        hero.style.backgroundImage =
+            `linear-gradient(rgba(12, 22, 6, 0.55), rgba(12, 22, 6, 0.72)), url('${banner}')`;
+    }
+
     hero.innerHTML = `
         <p class="Kanit-Title">${game.title}</p>
         <p class="Main-Subtitle Center-Text">${game.description || ''}</p>

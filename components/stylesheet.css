@@ -1446,3 +1446,92 @@ body.paper footer {
     .feed-row-tag { order: 2; }
     .feed-row-title { flex: 1 0 100%; white-space: normal; order: 3; }
 }
+
+/* =========================================================
+   Paper theme rollout — other pages
+   ========================================================= */
+
+/* Editorial page hero (paper, green title) */
+.page-hero {
+    text-align: center;
+    padding: 2.6rem 6% 1.6rem 6%;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+/* Legacy white-text classes become readable on paper... */
+body.paper .Kanit-Title,
+body.paper .Main-Title,
+body.paper .Secondary-Title { color: var(--heading); }
+body.paper .Main-Subtitle { color: var(--text-soft); }
+body.paper .Secondary-Text { color: var(--text); }
+
+/* ...but stay white inside green bands */
+body.paper .dark-area .Kanit-Title, body.paper .band-green .Kanit-Title,
+body.paper .dark-area .Main-Title, body.paper .band-green .Main-Title,
+body.paper .dark-area .Secondary-Title, body.paper .band-green .Secondary-Title,
+body.paper .dark-area .Main-Subtitle, body.paper .band-green .Main-Subtitle,
+body.paper .dark-area .Secondary-Text, body.paper .band-green .Secondary-Text { color: #fff; }
+
+/* Project cards (projects page) on paper */
+body.paper .aero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--green);
+    box-shadow: 0 4px 14px rgba(60, 80, 20, 0.10);
+}
+body.paper .aero-card::before { display: none; }
+body.paper .aero-card:hover {
+    box-shadow: 0 12px 26px rgba(60, 80, 20, 0.20);
+}
+body.paper .aero-card-title { color: var(--heading); text-shadow: none; }
+body.paper .aero-card-desc { color: var(--text-soft); text-shadow: none; }
+body.paper .aero-tag {
+    color: var(--tag-text);
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    text-shadow: none;
+    box-shadow: none;
+}
+
+/* Devlog post cards on paper */
+body.paper .post-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--green);
+    box-shadow: 0 4px 14px rgba(60, 80, 20, 0.10);
+}
+body.paper .post-title { color: var(--heading); text-shadow: none; }
+body.paper .post-date { color: var(--text-soft); opacity: 1; }
+body.paper .post-content { color: var(--text); text-shadow: none; }
+body.paper .post-content a { color: var(--green-deep); }
+
+/* Contact page about-text block on paper */
+.about-content {
+    max-width: 760px;
+    margin: 0 auto 2rem auto;
+    padding: 0 6%;
+    font-family: "Kanit", serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+.about-content p { margin: 0 0 1rem 0; }
+
+/* ---- Game page: banner hero with per-game accent ---- */
+.game-hero {
+    position: relative;
+    text-align: center;
+    padding: 4rem 6% 3.5rem 6%;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 5px solid var(--accent, var(--green));
+    margin-bottom: 1.5rem;
+}
+.game-hero > * { position: relative; z-index: 2; }
+body.paper .game-hero .Kanit-Title,
+body.paper .game-hero .Main-Subtitle { color: #fff; }
+.game-hero .Kanit-Title { text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6); }
+.game-hero .Main-Subtitle { text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6); }
+.game-hero .game-tags { margin-top: 0.9rem; }
