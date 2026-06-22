@@ -1,6 +1,8 @@
 fetch('components/portfolioItems.json', { cache: 'no-store' })
 .then(response => response.json())
 .then(portfolioItems => {
+    // Items flagged hidden are kept in the JSON but not shown (e.g. work-in-progress).
+    portfolioItems = portfolioItems.filter(it => !it.hidden);
     const container = document.getElementById('portfolio-container');
     const portfolio = document.getElementById('portfolio');
     const modalContainer = document.getElementById('modal-container');
@@ -53,7 +55,9 @@ fetch('components/portfolioItems.json', { cache: 'no-store' })
                 <div class="aero-tags">${tagChips(item.tags)}</div>
             </div>
         `;
-        if (item.hasPage && item.slug) {
+        if (item.link) {
+            card.addEventListener('click', () => { window.location.href = item.link; });
+        } else if (item.hasPage && item.slug) {
             card.addEventListener('click', () => { window.location.href = `game.html?id=${item.slug}`; });
         } else {
             card.addEventListener('click', () => openModal(index));

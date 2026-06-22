@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="assets/logo.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Share a Tool Dial launcher theme with the community — paste your share code, preview it, and submit for review.">
+    <title>Tool Dial — Share a Theme</title>
+    <link rel="stylesheet" type="text/css" href="components/tooldial.css?v=4">
+</head>
+
+<body class="tooldial-page">
+    <canvas id="td-stars" class="td-stars"></canvas>
+
+    <header class="td-nav">
+        <a class="td-brand" href="tooldial-themes.html"><span class="td-brand-dot"></span>Tool<b>Dial</b></a>
+        <nav class="td-nav-links">
+            <a href="tooldial-themes.html">Gallery</a>
+            <a href="tooldial-submit.html" class="is-active">Submit</a>
+        </nav>
+    </header>
+
+    <section class="td-hero fade-in">
+        <p class="td-eyebrow">Account-free</p>
+        <h1>Share a <b>Theme</b></h1>
+        <p class="td-sub">Made a look you love in the app? Paste its share code below to preview it and submit it to the community gallery. No account needed.</p>
+    </section>
+
+    <div class="td-submit-wrap fade-in">
+        <form id="td-submit-form" class="td-form" novalidate autocomplete="off">
+            <div id="td-config-notice" class="td-config-notice"></div>
+
+            <div class="td-form-row">
+                <label for="td-code">Share code <span class="req">*</span></label>
+                <textarea id="td-code" class="td-textarea" placeholder="TDT1-…  (copy it from the app: Themes → your theme → Copy code)" spellcheck="false"></textarea>
+                <span id="td-code-error" class="td-field-error" style="display:none;"></span>
+            </div>
+
+            <div class="td-form-row">
+                <label for="td-name">Theme name <span class="req">*</span></label>
+                <input id="td-name" class="td-input" type="text" maxlength="32" placeholder="e.g. Aurora">
+                <span id="td-name-error" class="td-field-error"></span>
+            </div>
+
+            <div class="td-form-row">
+                <label for="td-author">Author handle <span style="opacity:.6">(optional)</span></label>
+                <input id="td-author" class="td-input" type="text" maxlength="24" placeholder="e.g. gurkis">
+                <span id="td-author-error" class="td-field-error"></span>
+            </div>
+
+            <!-- Honeypot: hidden from humans, bots fill it -->
+            <div class="td-hp" aria-hidden="true">
+                <label for="td-hp">Leave this field empty</label>
+                <input id="td-hp" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <button id="td-submit-btn" class="td-btn-primary" type="submit" disabled>Submit for review</button>
+            <p id="td-form-msg" class="td-form-msg"></p>
+            <p class="td-fineprint">Submissions are reviewed before they appear in the gallery — nothing publishes instantly. Only the name and author are moderated; the look is rendered straight from your code.</p>
+        </form>
+
+        <div class="td-preview-panel">
+            <h2>Live preview</h2>
+            <div id="td-preview-wrap" class="td-preview-wrap">
+                <p id="td-preview-note" class="td-preview-note">Paste a valid <code>TDT1-…</code> code to see your theme here.</p>
+            </div>
+            <p class="td-fineprint">Rendered from your code, exactly as the gallery and app render it. Tap it to preview the dial.</p>
+        </div>
+    </div>
+
+    <footer class="td-foot">
+        <p>Tool Dial — a project by <a href="index.html">Gurkis</a>.</p>
+    </footer>
+
+    <script src="components/tooldial-config.js?v=4"></script>
+    <script src="components/tooldial-theme.js?v=4"></script>
+    <script src="components/tooldial-renderer.js?v=4"></script>
+    <script src="components/tooldial-dial.js?v=4"></script>
+    <script src="components/tooldial-bg.js?v=4"></script>
+    <script src="components/tooldial-submit.js?v=4"></script>
+    <script data-goatcounter="https://gurkis.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

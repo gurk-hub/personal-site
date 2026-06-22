@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="assets/logo.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse and share community themes for the Tool Dial launcher — live animated previews, one-tap import.">
+    <title>Tool Dial — Theme Gallery</title>
+    <link rel="stylesheet" type="text/css" href="components/tooldial.css?v=4">
+</head>
+
+<body class="tooldial-page">
+    <canvas id="td-stars" class="td-stars"></canvas>
+
+    <header class="td-nav">
+        <a class="td-brand" href="tooldial-themes.html"><span class="td-brand-dot"></span>Tool<b>Dial</b></a>
+        <nav class="td-nav-links">
+            <a href="tooldial-themes.html" class="is-active">Gallery</a>
+            <a href="tooldial-submit.html">Submit</a>
+        </nav>
+    </header>
+
+    <section class="td-hero fade-in">
+        <p class="td-eyebrow">Community Themes</p>
+        <h1>Theme <b>Gallery</b></h1>
+        <p class="td-sub">Themes for the Tool Dial launcher, each rendered live from its share code. Copy a code to import it into the app — tap any preview to see how its dial looks.</p>
+        <div class="td-hero-links">
+            <a class="td-btn-primary" href="tooldial-submit.html">Share your theme →</a>
+        </div>
+    </section>
+
+    <div id="td-status" class="td-status" style="display:none;"></div>
+
+    <div class="td-controls fade-in">
+        <div class="td-field">
+            <label for="td-sort">Sort</label>
+            <select id="td-sort" class="td-select">
+                <option value="saved">Most saved</option>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+            </select>
+        </div>
+        <div class="td-field">
+            <label>Colour</label>
+            <div id="td-hues" class="td-hues"></div>
+        </div>
+    </div>
+
+    <div id="td-grid" class="td-grid fade-in"></div>
+
+    <!-- Larger phone preview + dial modal -->
+    <div id="td-modal" class="td-modal">
+        <div class="td-modal-card">
+            <button id="td-modal-close" class="td-modal-close" aria-label="Close">&times;</button>
+            <div id="td-modal-body"></div>
+        </div>
+    </div>
+
+    <footer class="td-foot">
+        <p>Tool Dial — a project by <a href="index.html">Gurkis</a>. Themes are community-submitted and reviewed before appearing here.</p>
+    </footer>
+
+    <script src="components/tooldial-config.js?v=4"></script>
+    <script src="components/tooldial-theme.js?v=4"></script>
+    <script src="components/tooldial-renderer.js?v=4"></script>
+    <script src="components/tooldial-dial.js?v=4"></script>
+    <script src="components/tooldial-bg.js?v=4"></script>
+    <script src="components/tooldial-gallery.js?v=4"></script>
+    <script data-goatcounter="https://gurkis.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
