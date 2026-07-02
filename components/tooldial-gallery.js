@@ -32,8 +32,15 @@
         { key: "purple", label: "Purple", deg: 275 }, { key: "pink", label: "Pink", deg: 320 },
     ];
 
+    const STYLES = [
+        { key: "WISP", label: "Wisp" },
+        { key: "WAVE", label: "Wave" },
+        { key: "RIBBON", label: "Ribbon" },
+    ];
+
     let entries = [];      // { id, name, author, code?, appearance, theme, saves, createdAt, hue }
     let activeHue = "all";
+    let activeStyle = "all";
     const handles = new Map(); // id -> renderer handle
 
     function setStatus(msg, kind) {
@@ -126,6 +133,9 @@
             const target = HUES.find(h => h.key === activeHue).deg;
             list = list.filter(e => hueDelta(e.hue, target) <= 30);
         }
+        if (activeStyle !== "all") {
+            list = list.filter(e => e.appearance && e.appearance.ribbonStyle === activeStyle);
+        }
         return sortEntries(list);
     }
 
@@ -182,7 +192,6 @@
                     </div>
                     <span class="td-saves" title="${e.saves} ${e.saves === 1 ? "save" : "saves"} (in the app)">♥ ${e.saves}</span>
                 </div>
-                ${e.code && CFG.APP_DEEPLINK_SCHEME ? `<div class="td-card-actions"><a class="td-btn td-open" href="${CFG.APP_DEEPLINK_SCHEME}://theme?d=${encodeURIComponent(b64urlOfCode(e.code))}">Open in app</a></div>` : ""}
             </div>`;
 
         const preview = card.querySelector(".td-preview");
@@ -257,6 +266,7 @@
                     ${e.author ? `<p class="td-card-author">by ${escapeHtml(e.author)}</p>` : ""}
                 </div>
                 <div class="td-modal-actions">
+                    ${e.code && CFG.APP_DEEPLINK_SCHEME ? `<a class="td-btn td-open" href="${CFG.APP_DEEPLINK_SCHEME}://theme?d=${encodeURIComponent(b64urlOfCode(e.code))}">Open in app</a>` : ""}
                     ${e.code ? `<button class="td-btn td-copy">Copy code</button>` : ""}
                     ${e.code && CFG.REPORT_FORM_ACTION_URL ? `<button class="td-btn td-btn-ghost td-report">Report</button>` : ""}
                 </div>
@@ -304,7 +314,7 @@
     function buildHueBar() {
         if (!hueBar) return;
         const mk = (key, label, css) => `<button class="td-swatch ${key === "all" ? "active" : ""}" data-hue="${key}" title="${label}" style="${css}"></button>`;
-        let html = mk("all", "All", "background:conic-gradient(red,orange,yellow,lime,cyan,blue,magenta,red)");
+        let html = mk("all", "All", "background:conic-gradient(red,orange,yellow,lime,cyan,blue,magenta,red);background-origin:border-box;background-repeat:no-repeat;background-size:100% 100%");
         HUES.forEach(h => { html += mk(h.key, h.label, `background:hsl(${h.deg} 80% 55%)`); });
         hueBar.innerHTML = html;
         hueBar.addEventListener("click", ev => {
@@ -316,9 +326,24 @@
         });
     }
 
+    function buildStyleBar() {
+        const bar = document.getElementById("td-styles");
+        if (!bar) return;
+        const mk = (key, label) => `<button class="td-style-chip ${key === "all" ? "active" : ""}" data-style="${key}">${label}</button>`;
+        bar.innerHTML = mk("all", "All") + STYLES.map(s => mk(s.key, s.label)).join("");
+        bar.addEventListener("click", ev => {
+            const b = ev.target.closest(".td-style-chip"); if (!b) return;
+            bar.querySelectorAll(".td-style-chip").forEach(x => x.classList.remove("active"));
+            b.classList.add("active");
+            activeStyle = b.dataset.style;
+            render();
+        });
+    }
+
     // ---- Init ----
     async function init() {
         buildHueBar();
+        buildStyleBar();
         if (sortSel) sortSel.addEventListener("change", render);
         const closeBtn = document.getElementById("td-modal-close");
         if (closeBtn) closeBtn.addEventListener("click", closeModal);

@@ -119,6 +119,16 @@
 .td-swatch:hover { transform: scale(1.15); }
 .td-swatch.active { box-shadow: 0 0 0 2px #fff; transform: scale(1.15); }
 
+.td-styles { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.td-style-chip {
+    padding: 0.32rem 0.72rem; border-radius: 999px; cursor: pointer;
+    background: var(--td-surface2); color: var(--td-soft);
+    border: 1px solid var(--td-border2); font-family: inherit; font-size: 0.82rem;
+    transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.td-style-chip:hover { color: var(--td-text); }
+.td-style-chip.active { background: #fff; color: #000; border-color: #fff; font-weight: 600; }
+
 /* ---------- Status ---------- */
 .td-status {
     max-width: 880px; margin: 0 auto 1.4rem; padding: 0.85rem 1.1rem;
@@ -254,6 +264,7 @@
 .td-form-row label { font-size: 0.88rem; color: var(--td-soft); }
 .td-form-row .req { color: #fff; }
 .td-input, .td-textarea {
+    box-sizing: border-box;
     background: var(--td-surface); color: var(--td-text);
     border: 1px solid var(--td-border2); border-radius: 10px;
     padding: 0.65rem 0.8rem; font-family: inherit; font-size: 0.95rem; width: 100%; resize: vertical;
