@@ -1,7 +1,7 @@
 // Shared loader + renderer for the posts feed.
 // posts.json is served from GitHub Pages so adding a post = git push (no Porkbun
 // re-upload). Falls back to the local copy bundled with the site.
-const POSTS_REMOTE = 'https://gurk-hub.github.io/portfolio/posts.json';
+const POSTS_REMOTE = 'https://gurk-hub.github.io/personal-site/posts.json';
 const POSTS_LOCAL  = 'posts.json';
 
 async function loadPosts() {
