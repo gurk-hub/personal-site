@@ -1,6 +1,6 @@
 /*
  * tooldial-gallery.js — the community theme Gallery. Fetches the manifest (Contract C), decodes
- * each TDT1 code, renders a live animated preview per card, and offers copy-code, QR, heart/save,
+ * each DTN1 code, renders a live animated preview per card, and offers copy-code, QR, heart/save,
  * deep-link, plus client-side sort + colour filter. Degrades gracefully: when MANIFEST_URL is
  * blank it shows a "coming soon" notice alongside a few built-in EXAMPLE themes so the renderer is
  * still demonstrable. CORS-blocked JSON falls back to CSV when MANIFEST_FORMAT === "csv".

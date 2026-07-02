@@ -3,7 +3,7 @@
  * the Android app load here byte-for-byte and vice versa.
  *
  *   • Schema defaults + range clamps mirror the app's Theme.kt / ThemeAppearance exactly.
- *   • Share code = "TDT1-" + Base64url( gzip( minified-UTF8-JSON ) )  (ThemeCodec.kt).
+ *   • Share code = "DTN1-" + Base64url( gzip( minified-UTF8-JSON ) )  (ThemeCodec.kt).
  *   • Colour/date logic mirrors XmbColor.kt (HSV gradient, 12-month palette, time brightness).
  *
  * Exposed as window.ToolDialTheme. Decode is fully tolerant: any failure returns null, unknown
@@ -13,7 +13,7 @@
     "use strict";
 
     const FORMAT = "tooldial-theme";
-    const PREFIX = "TDT1-";
+    const PREFIX = "DTN1-";
 
     // Valid enum values (from data/Config.kt). Unknown -> first entry (the app's fallback).
     const ENUMS = {
@@ -179,14 +179,14 @@
     const enc = new TextEncoder();
     const dec = new TextDecoder();
 
-    /** Theme -> "TDT1-..." share code. */
+    /** Theme -> "DTN1-..." share code. */
     async function encode(theme) {
         const json = JSON.stringify(theme);
         const gz = await gzip(enc.encode(json));
         return PREFIX + bytesToB64url(gz);
     }
 
-    /** "TDT1-..." share code -> normalized Theme, or null on any problem (never throws). */
+    /** "DTN1-..." share code -> normalized Theme, or null on any problem (never throws). */
     async function decode(raw) {
         try {
             if (typeof raw !== "string") return null;

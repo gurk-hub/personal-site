@@ -31,5 +31,5 @@ window.TOOLDIAL_CONFIG = {
     SAVE_ENTRY_INSTALL: "entry.1509129131",
 
     // --- Deep links ("Open in app"), optional ---
-    APP_DEEPLINK_SCHEME: "tooldial",
+    APP_DEEPLINK_SCHEME: "detune",
 };

@@ -1,5 +1,5 @@
 /*
- * tooldial-submit.js — account-free submission. The user pastes a TDT1 share code; we decode it
+ * tooldial-submit.js — account-free submission. The user pastes a DTN1 share code; we decode it
  * (blocking submit if invalid), show a live preview of exactly what they're sharing, sanitize the
  * name/author client-side, and POST to the Google Form via no-cors. A hidden honeypot field traps
  * bots. Submissions are queued for owner review — nothing publishes instantly.
@@ -50,7 +50,7 @@
         if (!raw) { setDecoded(null, ""); return; }
         const theme = await T.decode(raw);
         if (seq !== decodeSeq) return; // a newer keystroke superseded this decode
-        if (!theme) { setDecoded(null, "Invalid theme code — check you copied the whole TDT1-… string."); return; }
+        if (!theme) { setDecoded(null, "Invalid theme code — check you copied the whole DTN1-… string."); return; }
         setDecoded(theme, "");
         // Suggest the theme's own name if the name field is empty.
         if (!nameInput.value && theme.name && theme.name !== "Theme") nameInput.value = theme.name;
