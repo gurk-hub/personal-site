@@ -12,7 +12,8 @@
 (function () {
     "use strict";
 
-    const FORMAT = "tooldial-theme";
+    const FORMAT = "detune-theme";
+    const LEGACY_FORMATS = ["tooldial-theme"];  // still decode codes from before the rebrand
     const PREFIX = "DTN1-";
 
     // Valid enum values (from data/Config.kt). Unknown -> first entry (the app's fallback).
@@ -123,7 +124,7 @@
 
     /** Build a full, valid Theme from any parsed JSON (default-fills + clamps). */
     function normalizeTheme(obj) {
-        if (!obj || obj.format !== FORMAT) return null;
+        if (!obj || (obj.format !== FORMAT && LEGACY_FORMATS.indexOf(obj.format) < 0)) return null;
         return {
             format: FORMAT,
             version: Number(obj.version) || 1,
