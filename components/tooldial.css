@@ -160,8 +160,8 @@
    (% of the preview's width) so they look identical in a small card and the big modal. */
 .td-overlay { position: absolute; inset: 0; pointer-events: none; }
 .td-ovrow { position: absolute; left: 0; right: 0; box-sizing: border-box; }
-.td-clock { font-weight: 200; line-height: 1; text-shadow: 0 2px 10px rgba(0,0,0,0.55); }
-.td-date { font-weight: 300; line-height: 1.15; text-shadow: 0 2px 10px rgba(0,0,0,0.55); }
+.td-clock { display: inline-block; font-weight: 200; line-height: 1; text-shadow: 0 2px 10px rgba(0,0,0,0.55); }
+.td-date { display: inline-block; font-weight: 300; line-height: 1.15; text-shadow: 0 2px 10px rgba(0,0,0,0.55); }
 .td-ovtext { display: inline-flex; align-items: center; gap: 0.35em; line-height: 1.1; font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.55); }
 .td-ovicon { width: 0.9em; height: 0.9em; flex: none; }
 .td-tap-hint {

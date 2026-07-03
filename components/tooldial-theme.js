@@ -23,12 +23,6 @@
         bgColor1Position: ["TOP_LEFT", "TOP_RIGHT", "CENTER", "BOTTOM_LEFT", "BOTTOM_RIGHT"],
         bgColor2Position: ["TOP_LEFT", "TOP_RIGHT", "CENTER", "BOTTOM_LEFT", "BOTTOM_RIGHT"],
         ribbonStyle: ["WISP", "WAVE", "RIBBON"],
-        clockAlignment: ["LEFT", "CENTER", "RIGHT"],
-        clockAlign: ["LEFT", "CENTER", "RIGHT"],
-        dateAlign: ["LEFT", "CENTER", "RIGHT"],
-        screenTimeAlign: ["LEFT", "CENTER", "RIGHT"],
-        stepsAlign: ["LEFT", "CENTER", "RIGHT"],
-        batteryAlign: ["LEFT", "CENTER", "RIGHT"],
         dateFormat: ["FULL", "ABBREVIATED", "NUMERIC_DMY", "NUMERIC_MDY", "ISO", "DAY_MONTH"],
         dialPosition: ["RIGHT", "LEFT", "CENTER"],
         dialSize: ["SMALL", "MEDIUM", "LARGE"],
@@ -51,15 +45,15 @@
         strongerFlowOnOpen: true, idleMotion: 20, scrollReaction: 45,
         speckles: true, speckleAmount: 25, speckleSizeMin: 15, speckleSizeMax: 45,
         speckleOpacityMin: 35, speckleOpacityMax: 90,
-        clock24h: true, showClock: true, showDate: true, clockAlignment: "CENTER",
+        clock24h: true, showClock: true, showDate: true,
         dateFormat: "FULL", clockVerticalPosition: 50, clockSize: 84, clockOpacity: 92,
         clockCustomColor: false, clockHue: 210,
         dateSize: 18, dateOpacity: 62, dateCustomColor: false, dateHue: 210,
-        clockAlign: "CENTER", dateAlign: "CENTER", clockDateGap: 8, hideStatusBar: false,
-        screenTimeAlign: "CENTER", screenTimeAsIcon: false,
-        stepsAlign: "CENTER", stepsAsIcon: false,
+        clockHorizontalPosition: 50, dateHorizontalPosition: 50, dateVerticalPosition: 50, hideStatusBar: false,
+        screenTimeHorizontalPosition: 50, screenTimeAsIcon: false,
+        stepsHorizontalPosition: 50, stepsAsIcon: false,
         showBattery: false, batterySize: 16, batteryPosition: 82, batteryOpacity: 70,
-        batteryCustomColor: false, batteryHue: 210, batteryAlign: "CENTER", batteryAsIcon: false,
+        batteryCustomColor: false, batteryHue: 210, batteryHorizontalPosition: 50, batteryAsIcon: false,
         showScreenTime: false, screenTimeSize: 14, screenTimePosition: 95, screenTimeOpacity: 50,
         screenTimeCustomColor: false, screenTimeHue: 210, screenTimeShowActive: false,
         showSteps: false, stepsSize: 16, stepsPosition: 90, stepsOpacity: 70,
@@ -87,7 +81,8 @@
         dateSize: [10, 40], dateOpacity: [0, 100], dateHue: [0, 360],
         screenTimeSize: [10, 32], screenTimePosition: [0, 100], screenTimeOpacity: [0, 100], screenTimeHue: [0, 360],
         stepsSize: [10, 40], stepsPosition: [0, 100], stepsOpacity: [0, 100], stepsHue: [0, 360],
-        clockDateGap: [0, 40],
+        clockHorizontalPosition: [0, 100], dateHorizontalPosition: [0, 100], dateVerticalPosition: [0, 100],
+        screenTimeHorizontalPosition: [0, 100], stepsHorizontalPosition: [0, 100], batteryHorizontalPosition: [0, 100],
         batterySize: [10, 40], batteryPosition: [0, 100], batteryOpacity: [0, 100], batteryHue: [0, 360],
         swipeDistance: [6, 72], dialTextSize: [14, 48], scrollStrength: [0, 2],
         dialRadius: [100, 360], dialEdgeDistance: [0, 160], dialVerticalOffset: [-400, 400],
@@ -120,7 +115,8 @@
                 if (NULLABLE.has(key) && (v === null || v === undefined)) {
                     out[key] = null;
                 } else {
-                    out[key] = clampNum(v, RANGES[key][0], RANGES[key][1]);
+                    const n = Number(v);
+                    out[key] = Number.isFinite(n) ? n : DEFAULTS[key];   // unclamped: typed values used as-is
                 }
             } else if (typeof DEFAULTS[key] === "boolean") {
                 out[key] = (v === true || v === "true");
