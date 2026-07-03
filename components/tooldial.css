@@ -48,6 +48,7 @@
     color: var(--td-text); text-decoration: none;
 }
 .td-brand b { font-weight: 700; }
+.td-brand-icon { width: 30px; height: 30px; border-radius: 7px; object-fit: contain; display: block; flex: none; }
 .td-brand .td-brand-dot {
     width: 20px; height: 20px; border-radius: 50%;
     border: 2px solid #fff; position: relative; display: inline-block;
