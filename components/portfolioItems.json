@@ -149,7 +149,7 @@
   {
     "title": "Detune Launcher",
     "hidden": true,
-    "link": "tooldial-themes.html",
+    "link": "detune-themes.html",
     "hasPage": false,
     "image": "assets/tooldial.svg",
     "description": "A radial-dial Android launcher with a customizable XMB-style theme system.",
