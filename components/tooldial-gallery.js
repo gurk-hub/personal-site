@@ -152,24 +152,7 @@
     }
 
     function overlayHTML(a) {
-        const now = new Date();
-        const hh = a.clock24h ? now.getHours() : (now.getHours() % 12 || 12);
-        const clock = `${String(hh).padStart(a.clock24h ? 2 : 1, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
-        const date = now.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
-        const align = a.clockAlignment === "LEFT" ? "flex-start" : a.clockAlignment === "RIGHT" ? "flex-end" : "center";
-        const top = a.clockVerticalPosition;
-        const clockColor = a.clockCustomColor ? `hsl(${a.clockHue} 80% 65%)` : "#fff";
-        const dateColor = a.dateCustomColor ? `hsl(${a.dateHue} 80% 70%)` : "#fff";
-        // Size in cqw (% of preview width) from the theme's clockSize/dateSize, against a ~380dp
-        // reference phone, so the clock looks identical in a small card and the big modal.
-        const clockCqw = (a.clockSize / 3.8).toFixed(2);
-        const dateCqw = (a.dateSize / 3.8).toFixed(2);
-        let html = `<div class="td-overlay" style="align-items:${align}; justify-content:flex-start; top:0;">`;
-        html += `<div class="td-ovstack" style="margin-top:${top}%;">`;
-        if (a.showClock) html += `<div class="td-clock" style="opacity:${a.clockOpacity / 100}; color:${clockColor}; font-size:${clockCqw}cqw;">${clock}</div>`;
-        if (a.showDate) html += `<div class="td-date" style="opacity:${a.dateOpacity / 100}; color:${dateColor}; font-size:${dateCqw}cqw;">${date}</div>`;
-        html += `</div></div>`;
-        return html;
+        return window.ToolDialOverlay.html(a);
     }
 
     function makeCard(e) {

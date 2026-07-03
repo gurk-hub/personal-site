@@ -102,21 +102,9 @@
     }
 
     function buildOverlay(a) {
-        const div = document.createElement("div");
-        const now = new Date();
-        const hh = a.clock24h ? now.getHours() : (now.getHours() % 12 || 12);
-        const clock = `${String(hh).padStart(a.clock24h ? 2 : 1, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
-        const date = now.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
-        const align = a.clockAlignment === "LEFT" ? "flex-start" : a.clockAlignment === "RIGHT" ? "flex-end" : "center";
-        const clockCqw = (a.clockSize / 3.8).toFixed(2);
-        const dateCqw = (a.dateSize / 3.8).toFixed(2);
-        div.className = "td-overlay";
-        div.style.alignItems = align;
-        div.innerHTML = `<div class="td-ovstack" style="margin-top:${a.clockVerticalPosition}%;">
-            ${a.showClock ? `<div class="td-clock" style="opacity:${a.clockOpacity / 100}; color:${a.clockCustomColor ? `hsl(${a.clockHue} 80% 65%)` : "#fff"}; font-size:${clockCqw}cqw;">${clock}</div>` : ""}
-            ${a.showDate ? `<div class="td-date" style="opacity:${a.dateOpacity / 100}; color:${a.dateCustomColor ? `hsl(${a.dateHue} 80% 70%)` : "#fff"}; font-size:${dateCqw}cqw;">${date}</div>` : ""}
-        </div>`;
-        return div;
+        const tmp = document.createElement("div");
+        tmp.innerHTML = window.ToolDialOverlay.html(a);
+        return tmp.firstElementChild;   // the .td-overlay element
     }
 
     function validate() {
