@@ -160,10 +160,22 @@
    (% of the preview's width) so they look identical in a small card and the big modal. */
 .td-overlay { position: absolute; inset: 0; pointer-events: none; }
 .td-ovrow { position: absolute; left: 0; right: 0; box-sizing: border-box; }
-.td-clock { display: inline-block; font-weight: 200; line-height: 1; text-shadow: 0 2px 10px rgba(0,0,0,0.55); }
-.td-date { display: inline-block; font-weight: 300; line-height: 1.15; text-shadow: 0 2px 10px rgba(0,0,0,0.55); }
+.td-clock { display: inline-block; font-weight: 200; line-height: 1; }
+.td-date { display: inline-block; font-weight: 300; line-height: 1.15; }
 .td-ovtext { display: inline-flex; align-items: center; gap: 0.35em; line-height: 1.1; font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.55); }
 .td-ovicon { width: 0.9em; height: 0.9em; flex: none; }
+/* Outline: the app strokes a layer UNDER the filled text, but -webkit-text-stroke paints over the
+   fill. So a stroked copy sits behind an identical filled copy, aligned by stacking them. */
+.td-clock.has-outline, .td-date.has-outline { position: relative; }
+.td-clock.has-outline .td-fill, .td-date.has-outline .td-fill { position: relative; }
+.td-stroke {
+    position: absolute; left: 0; top: 0; white-space: pre;
+    -webkit-text-stroke-linejoin: round; paint-order: stroke fill;
+}
+.td-modal-date { margin: 0.2rem 0 0; font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+/* Music controls: prev / play-pause / next, each sized by its own font-size. */
+.td-ovmusic-row { display: inline-flex; align-items: center; gap: 0.5em; }
+.td-ovmusic { width: 1em; height: 1em; display: block; }
 .td-tap-hint {
     position: absolute; left: 0; right: 0; bottom: 36px; text-align: center;
     font-size: 0.7rem; color: rgba(255,255,255,0.6); pointer-events: none;

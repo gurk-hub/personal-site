@@ -32,11 +32,15 @@
         { key: "purple", label: "Purple", deg: 275 }, { key: "pink", label: "Pink", deg: 320 },
     ];
 
+    // ribbonCount: 0 is the "None" style — the ribbon loop is skipped entirely, so such a theme
+    // shows no ribbons whatever its ribbonStyle says. Filter on that, not the stale enum.
     const STYLES = [
         { key: "WISP", label: "Wisp" },
         { key: "WAVE", label: "Wave" },
         { key: "RIBBON", label: "Ribbon" },
+        { key: "NONE", label: "None" },
     ];
+    const styleOf = a => (!a ? null : (a.ribbonCount === 0 ? "NONE" : a.ribbonStyle));
 
     let entries = [];      // { id, name, author, code?, appearance, theme, saves, createdAt, hue }
     let activeHue = "all";
@@ -105,8 +109,12 @@
             if (!theme) continue; // skip undecodable entries rather than failing the whole list
             out.push({
                 id: r.id || ("t-" + out.length),
-                name: theme.name || r.name || "Theme",
-                author: theme.author || r.author || null,
+                // The manifest row wins over the name baked into the share code: the row is what was
+                // typed on the submit form and what a reviewer can correct, whereas the code's own
+                // name is whatever the theme happened to be called in the app. Fall back to the
+                // code's name only when the row has none (e.g. the built-in examples).
+                name: r.name || theme.name || "Theme",
+                author: r.author || theme.author || null,
                 code: r.code || null,
                 appearance: theme.appearance,
                 saves: Number(r.saves != null ? r.saves : (r.likes || 0)) || 0,
@@ -134,7 +142,7 @@
             list = list.filter(e => hueDelta(e.hue, target) <= 30);
         }
         if (activeStyle !== "all") {
-            list = list.filter(e => e.appearance && e.appearance.ribbonStyle === activeStyle);
+            list = list.filter(e => styleOf(e.appearance) === activeStyle);
         }
         return sortEntries(list);
     }
@@ -247,6 +255,7 @@
                 <div>
                     <h3 class="td-modal-title">${escapeHtml(e.name)}</h3>
                     ${e.author ? `<p class="td-card-author">by ${escapeHtml(e.author)}</p>` : ""}
+                    ${submittedOn(e.createdAt) ? `<p class="td-modal-date">Submitted ${escapeHtml(submittedOn(e.createdAt))}</p>` : ""}
                 </div>
                 <div class="td-modal-actions">
                     ${e.code && CFG.APP_DEEPLINK_SCHEME ? `<a class="td-btn td-open" href="${CFG.APP_DEEPLINK_SCHEME}://theme?d=${encodeURIComponent(b64urlOfCode(e.code))}">Open in app</a>` : ""}
@@ -292,6 +301,14 @@
     }
 
     function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+
+    /** "21 Jun 2026" from the manifest's ISO createdAt; "" if it's missing or unparseable. */
+    function submittedOn(iso) {
+        if (!iso) return "";
+        const d = new Date(iso);
+        if (isNaN(d)) return "";
+        return d.toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
+    }
 
     // ---- Controls ----
     function buildHueBar() {

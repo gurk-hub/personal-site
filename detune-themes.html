@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Browse and share community themes for the Detune Launcher — live animated previews, one-tap import.">
     <title>Detune — Theme Gallery</title>
-    <link rel="stylesheet" type="text/css" href="components/tooldial.css?v=14">
+    <link rel="stylesheet" type="text/css" href="components/tooldial.css?v=15">
 </head>
 
 <body class="tooldial-page">
@@ -29,8 +29,6 @@
         </div>
     </section>
 
-    <div id="td-status" class="td-status" style="display:none;"></div>
-
     <div class="td-controls fade-in">
         <div class="td-field">
             <label for="td-sort">Sort</label>
@@ -50,6 +48,9 @@
         </div>
     </div>
 
+    <!-- Below the controls: the status belongs with the results it describes, not above the filters. -->
+    <div id="td-status" class="td-status" style="display:none;"></div>
+
     <div id="td-grid" class="td-grid fade-in"></div>
 
     <!-- Larger phone preview + dial modal -->
@@ -64,13 +65,14 @@
         <p>Detune — a project by <a href="index.html">Gurkis</a>. Themes are community-submitted and reviewed before appearing here.</p>
     </footer>
 
-    <script src="components/tooldial-config.js?v=14"></script>
-    <script src="components/tooldial-theme.js?v=14"></script>
-    <script src="components/tooldial-renderer.js?v=14"></script>
-    <script src="components/tooldial-dial.js?v=14"></script>
-    <script src="components/tooldial-bg.js?v=14"></script>
-    <script src="components/tooldial-overlay.js?v=14"></script>
-    <script src="components/tooldial-gallery.js?v=14"></script>
+    <script src="components/tooldial-config.js?v=15"></script>
+    <script src="components/tooldial-theme.js?v=15"></script>
+    <script src="components/tooldial-fonts.js?v=15"></script>
+    <script src="components/tooldial-renderer.js?v=15"></script>
+    <script src="components/tooldial-dial.js?v=15"></script>
+    <script src="components/tooldial-bg.js?v=15"></script>
+    <script src="components/tooldial-overlay.js?v=15"></script>
+    <script src="components/tooldial-gallery.js?v=15"></script>
     <script data-goatcounter="https://gurkis.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
