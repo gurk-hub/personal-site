@@ -13,6 +13,9 @@
  *
  * The eleven widgets carry STYLE ONLY. Their content (the user's name, custom text, countdown
  * date) never leaves the phone, so previews show the same neutral sample strings the app uses.
+ *
+ * Icons are Google's Material Icons (Apache 2.0), the same set the app draws:
+ * https://github.com/google/material-design-icons
  */
 (function () {
     "use strict";
@@ -26,14 +29,55 @@
     const cqw = px => (Number(px) / REF).toFixed(2) + "cqw";
     const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-    const ICONS = {
-        schedule: '<svg class="td-ovicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 1.7"/></svg>',
-        steps: '<svg class="td-ovicon" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="8" cy="8.5" rx="2.6" ry="4"/><ellipse cx="15.5" cy="15" rx="2.6" ry="4"/></svg>',
-        battery: '<svg class="td-ovicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="15" height="9" rx="1.5"/><path d="M20.5 11.5v2" stroke-linecap="round"/><rect x="5" y="10" width="8.5" height="5" rx="0.5" fill="currentColor" stroke="none"/></svg>',
-        prev: '<svg class="td-ovmusic" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6h2v12H7zM19 6v12l-9-6z"/></svg>',
-        play: '<svg class="td-ovmusic" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
-        next: '<svg class="td-ovmusic" viewBox="0 0 24 24" fill="currentColor"><path d="M15 6h2v12h-2zM5 6l9 6-9 6z"/></svg>',
+    // Stand-in readings for the live values the phone would supply. They never leave the device,
+    // so a preview just shows something plausible and stable.
+    const SAMPLE_STEPS = 4213;
+    const SAMPLE_BATTERY = 76;
+    const SAMPLE_CHARGING = false;
+
+    /**
+     * Google's Material Icons (classic Filled/baseline set, Apache 2.0) -- the same ones the app
+     * draws, taken from google/material-design-icons so the previews match it exactly rather than
+     * approximating. All are 24x24; inlined rather than loaded from the icon font so they can't
+     * flash in late or go missing offline.
+     */
+    const ICON_PATHS = {
+        schedule: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z",
+        directions_walk: "M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7",
+        battery_charging_full: "M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM11 20v-5.5H9L13 7v5.5h2L11 20z",
+        battery_full: "M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z",
+        battery_6_bar: "M17,5v16c0,0.55-0.45,1-1,1H8c-0.55,0-1-0.45-1-1V5c0-0.55,0.45-1,1-1h2V2h4v2h2C16.55,4,17,4.45,17,5z M15,6H9v2h6V6z",
+        battery_5_bar: "M17,5v16c0,0.55-0.45,1-1,1H8c-0.55,0-1-0.45-1-1V5c0-0.55,0.45-1,1-1h2V2h4v2h2C16.55,4,17,4.45,17,5z M15,6H9v4h6V6z",
+        battery_4_bar: "M17,5v16c0,0.55-0.45,1-1,1H8c-0.55,0-1-0.45-1-1V5c0-0.55,0.45-1,1-1h2V2h4v2h2C16.55,4,17,4.45,17,5z M15,6H9v6h6V6z",
+        battery_3_bar: "M17,5v16c0,0.55-0.45,1-1,1H8c-0.55,0-1-0.45-1-1V5c0-0.55,0.45-1,1-1h2V2h4v2h2C16.55,4,17,4.45,17,5z M15,6H9v8h6V6z",
+        battery_2_bar: "M17,5v16c0,0.55-0.45,1-1,1H8c-0.55,0-1-0.45-1-1V5c0-0.55,0.45-1,1-1h2V2h4v2h2C16.55,4,17,4.45,17,5z M15,6H9v10h6V6z",
+        battery_1_bar: "M17,5v16c0,0.55-0.45,1-1,1H8c-0.55,0-1-0.45-1-1V5c0-0.55,0.45-1,1-1h2V2h4v2h2C16.55,4,17,4.45,17,5z M15,6H9v12h6V6z",
+        battery_0_bar: "M17,5v16c0,0.55-0.45,1-1,1H8c-0.55,0-1-0.45-1-1V5c0-0.55,0.45-1,1-1h2V2h4v2h2C16.55,4,17,4.45,17,5z M15,6H9v14h6V6z",
+        skip_previous: "M6 6h2v12H6zm3.5 6l8.5 6V6z",
+        play_arrow: "M8 5v14l11-7z",
+        pause: "M6 19h4V5H6v14zm8-14v14h4V5h-4z",
+        skip_next: "M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z",
     };
+    const icon = (name, cls) =>
+        '<svg class="' + (cls || "td-ovicon") + '" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
+        + '<path d="' + ICON_PATHS[name] + '"/></svg>';
+
+    /**
+     * The battery icon follows the level, matching the app's ladder (HomeScreen.kt). Our sample is
+     * a static 76% and never charging, but keep it data-driven so the icon stays honest if that
+     * sample ever changes.
+     */
+    function batteryIcon(pct, charging) {
+        if (charging) return "battery_charging_full";
+        if (pct >= 96) return "battery_full";
+        if (pct >= 85) return "battery_6_bar";
+        if (pct >= 70) return "battery_5_bar";
+        if (pct >= 55) return "battery_4_bar";
+        if (pct >= 40) return "battery_3_bar";
+        if (pct >= 25) return "battery_2_bar";
+        if (pct >= 10) return "battery_1_bar";
+        return "battery_0_bar";
+    }
 
     // ---- date formatting (dateFormat enum) ----
     const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -145,11 +189,12 @@
         const style = `opacity:${w.opacity / 100}; color:${color}; font-size:${cqw(w.size)};`
             + ` font-family:${F.widgetStack(a, w)};`;
         const content = (key === "musicControlsWidget")
-            // prev / play-pause / next, sized size*1.4 / size*1.9 / size*1.4.
+            // prev / play-pause / next, sized size*1.4 / size*1.9 / size*1.4. The middle icon is
+            // play_arrow vs pause depending on playback; a static preview isn't playing anything.
             ? `<span class="td-ovmusic-row">`
-                + `<span style="font-size:${cqw(w.size * 1.4)}">${ICONS.prev}</span>`
-                + `<span style="font-size:${cqw(w.size * 1.9)}">${ICONS.play}</span>`
-                + `<span style="font-size:${cqw(w.size * 1.4)}">${ICONS.next}</span>`
+                + `<span style="font-size:${cqw(w.size * 1.4)}">${icon("skip_previous", "td-ovmusic")}</span>`
+                + `<span style="font-size:${cqw(w.size * 1.9)}">${icon("play_arrow", "td-ovmusic")}</span>`
+                + `<span style="font-size:${cqw(w.size * 1.4)}">${icon("skip_next", "td-ovmusic")}</span>`
                 + `</span>`
             : `<span>${esc(WIDGET_TEXT[key])}</span>`;
         return el(w.position, w.horizontalPosition, "td-ovtext", style, content);
@@ -172,13 +217,16 @@
             // screenTimeShowActive adds a second "active time" figure alongside the total.
             const total = "2h 14m";
             const value = a.screenTimeShowActive ? total + " · 47m active" : total;
-            out += statEl(a, "screenTime", ICONS.schedule, value, value);
+            out += statEl(a, "screenTime", icon("schedule"), value, value);
         }
         if (a.showSteps) {
-            const n = (4213).toLocaleString("en-US");
-            out += statEl(a, "steps", ICONS.steps, n, n + " steps");
+            const n = SAMPLE_STEPS.toLocaleString("en-US");
+            out += statEl(a, "steps", icon("directions_walk"), n, n + " steps");
         }
-        if (a.showBattery) out += statEl(a, "battery", ICONS.battery, "76%", "76%");
+        if (a.showBattery) {
+            const pct = SAMPLE_BATTERY + "%";
+            out += statEl(a, "battery", icon(batteryIcon(SAMPLE_BATTERY, SAMPLE_CHARGING)), pct, pct);
+        }
 
         for (const key of Object.keys(T.WIDGET_KEYS)) {
             const w = a[key];
@@ -189,5 +237,5 @@
         return out;
     }
 
-    window.ToolDialOverlay = { html, formatDate, WIDGET_TEXT };
+    window.ToolDialOverlay = { html, formatDate, batteryIcon, icon, ICON_PATHS, WIDGET_TEXT };
 })();

@@ -67,7 +67,7 @@ structural change it ever makes, and appending can't shift the columns your mani
 - Rows are addressed by their **real sheet row number**, read fresh on each load. If you insert or
   delete rows in the Sheet while the page is open, hit **Refresh** before acting, or you could
   approve the wrong row.
-- The page loads the renderer from `https://gurkis.dev/components/...?v=16`. When you bump the
+- The page loads the renderer from `https://gurkis.dev/components/...?v=17`. When you bump the
   site's `?v=`, bump it in `detune-review.html` too or you'll review themes with a stale renderer.
 - **Don't request a new `?v=` URL until Porkbun has finished deploying.** Its CDN caches assets for
   30 days and keys on the full query string, so a fetch during the deploy window pins the *old*
