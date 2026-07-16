@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base target="_top">
+<meta charset="utf-8">
+<!--
+  detune-review.html — the private review UI, served by Apps Script (see detune-review.gs).
+
+  It pulls the renderer straight from gurkis.dev rather than duplicating it, so a theme previews
+  here byte-for-byte the way it will in the public gallery. Bump ?v= to match the site when the
+  components change. Nothing secret lives in this file: the gate is the deployment's
+  "Only myself" access, not anything on the page.
+-->
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; padding: 18px; background: #0b0b0d; color: #f2f2f2;
+    font: 14px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  h1 { font-size: 1.1rem; margin: 0 0 2px; font-weight: 600; }
+  .sub { color: rgba(255,255,255,0.5); font-size: 0.8rem; margin: 0 0 16px; }
+  .bar { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+  button {
+    font: inherit; border-radius: 8px; border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.06); color: #fff; padding: 6px 12px; cursor: pointer;
+  }
+  button:hover { background: rgba(255,255,255,0.12); }
+  button:disabled { opacity: 0.45; cursor: default; }
+  button.primary { background: #2f9e5f; border-color: #2f9e5f; }
+  button.primary:hover { background: #37b56d; }
+  button.danger { background: transparent; border-color: rgba(255,90,90,0.5); color: #ff8b8b; }
+  button.danger:hover { background: rgba(255,90,90,0.12); }
+  .tabs button.on { background: #fff; color: #000; border-color: #fff; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+  .card {
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; overflow: hidden;
+    background: #141417; display: flex; flex-direction: column;
+  }
+  .card.busy { opacity: 0.5; pointer-events: none; }
+  .card.gone { display: none; }
+  .phone {
+    position: relative; aspect-ratio: 9 / 16; background: #000;
+    container-type: inline-size; cursor: pointer;
+    /* Both of these matter. .phone is a flex item, so min-height:auto would be content-based;
+       overflow:hidden forces it to 0 (this is what keeps the gallery's .td-preview safe). */
+    overflow: hidden; min-height: 0;
+  }
+  /* Absolute, NOT in-flow. An in-flow canvas with height:100% inside an aspect-ratio box makes the
+     percentage cyclic: it falls back to the canvas's intrinsic height, which the renderer rewrites
+     to rect*dpr every frame, so the box grows without bound. Taking it out of flow means it can
+     never contribute to the parent's height, whatever the renderer writes. */
+  .phone canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .body { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .row { display: flex; gap: 6px; }
+  input {
+    flex: 1; min-width: 0; box-sizing: border-box; font: inherit; padding: 5px 8px;
+    border-radius: 6px; border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(0,0,0,0.35); color: #fff;
+  }
+  .meta { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+  .actions { display: flex; gap: 6px; }
+  .actions button { flex: 1; }
+  .hint {
+    position: absolute; left: 0; right: 0; bottom: 8px; text-align: center;
+    font-size: 0.65rem; color: rgba(255,255,255,0.5); pointer-events: none;
+  }
+  .msg { padding: 10px 12px; border-radius: 8px; margin-bottom: 12px; font-size: 0.85rem; }
+  .msg.err { background: rgba(255,80,80,0.14); border: 1px solid rgba(255,80,80,0.4); }
+  .msg.ok { background: rgba(60,190,120,0.14); border: 1px solid rgba(60,190,120,0.4); }
+  .empty { color: rgba(255,255,255,0.45); padding: 24px 0; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size: 0.75rem; }
+</style>
+</head>
+<body>
+
+<h1>Detune — theme review</h1>
+<p class="sub">Private. Only your Google account can open this page.</p>
+
+<div class="bar">
+  <span class="tabs">
+    <button id="tab-pending" class="on">Pending</button>
+    <button id="tab-live">Live</button>
+  </span>
+  <button id="refresh">Refresh</button>
+  <span id="count" class="meta"></span>
+</div>
+
+<div id="msg"></div>
+<div id="grid" class="grid"></div>
+<p id="empty" class="empty" style="display:none">Nothing here.</p>
+
+<!-- The real gallery renderer, loaded from the live site so previews can't drift out of sync. -->
+<script src="https://gurkis.dev/components/tooldial-theme.js?v=15"></script>
+<script src="https://gurkis.dev/components/tooldial-fonts.js?v=15"></script>
+<script src="https://gurkis.dev/components/tooldial-renderer.js?v=15"></script>
+<script src="https://gurkis.dev/components/tooldial-dial.js?v=15"></script>
+<script src="https://gurkis.dev/components/tooldial-overlay.js?v=15"></script>
+<link rel="stylesheet" href="https://gurkis.dev/components/tooldial.css?v=15">
+
+<script>
+(function () {
+  "use strict";
+
+  var grid = document.getElementById("grid");
+  var msgEl = document.getElementById("msg");
+  var countEl = document.getElementById("count");
+  var emptyEl = document.getElementById("empty");
+  var handles = [];
+  var mode = "pending";
+
+  function msg(text, kind) {
+    msgEl.innerHTML = text ? '<div class="msg ' + kind + '">' + esc(text) + "</div>" : "";
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function fmtDate(iso) {
+    if (!iso) return "";
+    var d = new Date(iso);
+    return isNaN(d.getTime()) ? "" : d.toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
+  }
+
+  function setMode(next) {
+    mode = next;
+    document.getElementById("tab-pending").classList.toggle("on", mode === "pending");
+    document.getElementById("tab-live").classList.toggle("on", mode === "live");
+    load();
+  }
+
+  function load() {
+    handles.forEach(function (h) { h.destroy(); });
+    handles = [];
+    grid.innerHTML = "";
+    emptyEl.style.display = "none";
+    countEl.textContent = "loading…";
+    msg("");
+    if (!window.ToolDialTheme) {
+      msg("Couldn't load the preview scripts from gurkis.dev. Check the site is up and the ?v= " +
+          "version in this file still exists.", "err");
+      countEl.textContent = "";
+      return;
+    }
+    var fn = (mode === "pending") ? "getPending" : "getApproved";
+    google.script.run
+      .withSuccessHandler(onRows)
+      .withFailureHandler(function (e) { msg("Server error: " + e.message, "err"); countEl.textContent = ""; })
+      [fn]();
+  }
+
+  function onRows(res) {
+    if (!res || !res.ok) {
+      msg((res && res.error) || "Couldn't read the sheet.", "err");
+      countEl.textContent = "";
+      return;
+    }
+    countEl.textContent = res.items.length + (mode === "pending" ? " pending" : " live");
+    if (!res.items.length) { emptyEl.style.display = ""; return; }
+    res.items.forEach(addCard);
+  }
+
+  function addCard(item) {
+    var card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML =
+      '<div class="phone">' +
+        '<canvas></canvas>' +
+        '<div class="td-scrim" style="display:none"></div>' +
+        '<div class="dial-host"></div>' +
+        '<span class="hint">tap for dial</span>' +
+      '</div>' +
+      '<div class="body">' +
+        '<div class="row"><input class="f-name" maxlength="24" placeholder="Name"></div>' +
+        '<div class="row"><input class="f-author" maxlength="24" placeholder="Author"></div>' +
+        '<div class="meta"></div>' +
+        '<div class="actions"></div>' +
+      '</div>';
+
+    card.querySelector(".f-name").value = item.name || "";
+    card.querySelector(".f-author").value = item.author || "";
+    card.querySelector(".meta").textContent =
+      "row " + item.row + (fmtDate(item.createdAt) ? " · submitted " + fmtDate(item.createdAt) : "");
+
+    // Decode + preview. An undecodable code is worth seeing rather than silently hiding — it
+    // means the app and the site disagree, which is exactly what review should catch.
+    var canvas = card.querySelector("canvas");
+    window.ToolDialTheme.decode(item.code).then(function (theme) {
+      if (!theme) {
+        card.querySelector(".phone").innerHTML =
+          '<div style="padding:12px;font-size:.75rem;color:#ff8b8b">Code won\'t decode.<br><code>' +
+          esc(item.code.slice(0, 24)) + '…</code></div>';
+        return;
+      }
+      var a = theme.appearance;
+      card.querySelector(".phone").insertAdjacentHTML("beforeend", window.ToolDialOverlay.html(a));
+      handles.push(window.ToolDialPreview.create(canvas, a, { interactive: false }));
+
+      var dialOn = false;
+      var scrim = card.querySelector(".td-scrim");
+      var host = card.querySelector(".dial-host");
+      var overlay = card.querySelector(".td-overlay");
+      card.querySelector(".phone").addEventListener("click", function () {
+        dialOn = !dialOn;
+        scrim.style.display = dialOn ? "" : "none";
+        if (overlay) overlay.style.opacity = dialOn ? "0.5" : "1";
+        card.querySelector(".hint").textContent = dialOn ? "tap for home" : "tap for dial";
+        if (dialOn) {
+          var r = card.querySelector(".phone").getBoundingClientRect();
+          window.ToolDialDial.render(host, a, { w: r.width, h: r.height });
+        } else { host.innerHTML = ""; }
+      });
+    });
+
+    var actions = card.querySelector(".actions");
+    if (mode === "pending") {
+      actions.appendChild(btn("Approve", "primary", function () {
+        call(card, "setApproved", [item.row, true], "Approved.");
+      }));
+      actions.appendChild(btn("Reject", "danger", function () {
+        if (!window.confirm('Reject "' + (item.name || "this theme") + '"?')) return;
+        call(card, "setRejected", [item.row], "Rejected.");
+      }));
+    } else {
+      actions.appendChild(btn("Unapprove", "danger", function () {
+        call(card, "setApproved", [item.row, false], "Pulled down.");
+      }));
+    }
+    actions.appendChild(btn("Save name", "", function () {
+      var n = card.querySelector(".f-name").value.trim();
+      var au = card.querySelector(".f-author").value.trim();
+      if (!n) { msg("Name can't be empty.", "err"); return; }
+      call(card, "saveMeta", [item.row, n, au], "Saved.", true);
+    }));
+
+    grid.appendChild(card);
+  }
+
+  function btn(label, cls, fn) {
+    var b = document.createElement("button");
+    b.textContent = label;
+    if (cls) b.className = cls;
+    b.addEventListener("click", fn);
+    return b;
+  }
+
+  /** Run a server call, greying the card until it lands. `stay` keeps the card visible. */
+  function call(card, fn, args, okText, stay) {
+    card.classList.add("busy");
+    google.script.run
+      .withSuccessHandler(function () {
+        card.classList.remove("busy");
+        if (!stay) card.classList.add("gone");
+        msg(okText, "ok");
+        var n = grid.querySelectorAll(".card:not(.gone)").length;
+        countEl.textContent = n + (mode === "pending" ? " pending" : " live");
+        if (!n) emptyEl.style.display = "";
+      })
+      .withFailureHandler(function (e) {
+        card.classList.remove("busy");
+        msg("Failed: " + e.message, "err");
+      })
+      [fn].apply(null, args);
+  }
+
+  document.getElementById("refresh").addEventListener("click", load);
+  document.getElementById("tab-pending").addEventListener("click", function () { setMode("pending"); });
+  document.getElementById("tab-live").addEventListener("click", function () { setMode("live"); });
+  load();
+})();
+</script>
+</body>
+</html>
