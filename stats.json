@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-28T18:44:33Z",
+  "generated_at": "2026-08-29T12:42:13Z",
   "modrinth": {
-    "downloads": 2071551,
+    "downloads": 2073446,
     "projects": 7,
-    "followers": 1692
+    "followers": 1693
   },
   "fortnite": {
-    "plays_7d": 144,
-    "hours_7d": 40,
-    "peak_ccu": 8,
+    "plays_7d": 130,
+    "hours_7d": 36,
+    "peak_ccu": 5,
     "active_islands": 2,
-    "followers": 1091,
-    "favorites": 646677
+    "followers": 1093,
+    "favorites": 646690
   }
 }
